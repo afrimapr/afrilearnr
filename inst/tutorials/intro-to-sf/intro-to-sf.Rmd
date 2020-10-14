@@ -10,29 +10,49 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-## Topic 1
+## An introduction to geographic data with package sf
 
-### Exercise 
+Geographic data can be divided into :
 
-*Here's a simple exercise with an empty code chunk provided for entering the answer.*
+* Vector
+  * **points** 
+  * **lines** 
+  * **polygons**
+  
+* Raster
+  * **gridded data** (e.g. from remote sensing)
 
-Write the R code required to add two plus two:
+The sf package deals with vector data (points, lines and polygons)
 
-```{r two-plus-two, exercise=TRUE}
 
-```
+### Sources of geographic data in R
 
-### Exercise with Code
+1. existing packages
+1. local files (that we may have downloaded)
+1. internet
+1. created by hand in R
 
-*Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.*
+
+### Loading some polygon data
+
+*This shows the code to load some polygon data from an existing package*
 
 Now write a function that adds any two numbers and then call it:
 
-```{r add-function, exercise=TRUE, exercise.lines = 5}
-add <- function() {
+```{r polygons-from-rnaturalearth, exercise=TRUE, exercise.lines = 5}
+
+library(rnaturalearth)
+library(sf)
+
+africa_map <- ne_countries(continent = 'Africa', returnclass = 'sf')
+
+plot(africa_map["pop_est"])
   
-}
+
 ```
+
+
+
 
 ## Topic 2
 
