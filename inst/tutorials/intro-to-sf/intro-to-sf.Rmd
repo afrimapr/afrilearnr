@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-## An introduction to geographic data with package sf
+## Geographic data types
 
 Geographic data can be divided into :
 
@@ -33,28 +33,52 @@ The sf package deals with vector data (points, lines and polygons)
 1. created by hand in R
 
 
-### Loading some polygon data
+## some sf data
 
-*This shows the code to load some polygon data from an existing package*
+TODO 
+~ instead save the example data in its own package (polygons, lines and points)
+~ maybe change this to be a first walk through with little detail (cake first)
 
-Now write a function that adds any two numbers and then call it:
+
+### polygon data from an existing package
+
+*code to load some polygon data from an existing package*
 
 ```{r polygons-from-rnaturalearth, exercise=TRUE, exercise.lines = 5}
 
 library(rnaturalearth)
 library(sf)
 
-africa_map <- ne_countries(continent = 'Africa', returnclass = 'sf')
+sf_africa <- ne_countries(continent = 'Africa', returnclass = 'sf')
 
-plot(africa_map["pop_est"])
+plot(sf_africa["pop_est"])
   
+
+```
+
+### 
+
+An sf object is a dataframe with one row per feature and a column called geometry that contains the spatial information.
+
+Use names() to see what columns there are. Then try changing the plot to show data from a different column.
+
+```{r sf-object, exercise=TRUE, exercise.lines = 5}
+
+library(rnaturalearth)
+library(sf)
+
+sf_africa <- ne_countries(continent = 'Africa', returnclass = 'sf')
+
+names(sf_africa)
+
+plot(sf_africa["pop_est"])
 
 ```
 
 
 
 
-## Topic 2
+## next Topic
 
 ### Exercise with Hint
 
