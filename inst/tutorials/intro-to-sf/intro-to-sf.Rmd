@@ -1,5 +1,5 @@
 ---
-title: "An afrimapr intro to sf"
+title: "afrimapr intro to spatial data in R"
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---
@@ -9,8 +9,33 @@ library(learnr)
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+This is an entry level introduction to spatial data in R using examples from Africa.
 
-## Geographic data types
+It is aimed at those with a little knowledge of R.
+
+We will be looking at the following spatial data for Africa. 
+
+1. Capital city locations (points)
+1. A highway network (lines)
+1. Country boundaries (polygons)
+1. Population density (gridded or raster data)
+
+The first 3 data types are termed vector and the final one is raster.
+
+In R the `sf` package deals with vector data (points, lines and polygons), and the `raster` package deals with raster data.
+
+There are other packages too but we don't need those for now.
+
+## Loading packages and data
+
+Packages in R contain extra methods and data not available in base R.
+
+We will be loading one package (`afrilearndata`) containing example data.
+
+And the packages `sf` and `raster` allowing us to deal with vector and raster data.
+
+
+## Spatial data types
 
 Geographic data can be divided into :
 
@@ -22,9 +47,6 @@ Geographic data can be divided into :
 * Raster
   * **gridded data** (e.g. from remote sensing)
 
-The sf package deals with vector data (points, lines and polygons)
-
-
 ### Sources of geographic data in R
 
 1. existing packages
@@ -35,9 +57,7 @@ The sf package deals with vector data (points, lines and polygons)
 
 ## some sf data
 
-TODO 
-~ instead save the example data in its own package (polygons, lines and points)
-~ maybe change this to be a first walk through with little detail (cake first)
+
 
 
 ### polygon data from an existing package
