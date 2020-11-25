@@ -2,6 +2,8 @@
 title: "afrimapr intro to spatial data in R"
 output: learnr::tutorial
 runtime: shiny_prerendered
+description: >
+  An entry level introduction to spatial data in R using examples from Africa.
 ---
 
 ```{r setup, include=FALSE}
@@ -95,7 +97,9 @@ plot(sf_africa["pop_est"])
 
 ```
 
-
+[NOTE can have setup and exercise chunks]
+[https://github.com/rstudio/learnr/issues/72]
+[NOTE can use exercise.setup='setupA' to make chunks dependent on previous setup or exercise chunks ]
 
 
 ## next Topic

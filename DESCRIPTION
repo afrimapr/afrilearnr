@@ -1,5 +1,5 @@
 Package: afrilearnr
-Title: What the Package Does (One Line, Title Case)
+Title: Tutorials on spatial data in R using African data
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Andy",
@@ -17,5 +17,8 @@ RoxygenNote: 7.1.1
 Suggests: 
     learnr
 Imports: 
-    rnaturalearth,
-    sf
+    sf,
+    raster,
+    afrilearndata (>= 0.0.0.9000)
+Remotes:  
+    afrimapr/afrilearndata
