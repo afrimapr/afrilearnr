@@ -1,15 +1,21 @@
 Package: afrilearnr
 Title: Tutorials on spatial data in R using African data
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R:
+    person(given = "Laurie",
+           family = "Baker",
+           role = c("aut", "cre"),
+           email = "laurie.baker@glasgow.ac.uk",
+           comment = c(ORCID = "")),
     person(given = "Andy",
            family = "South",
            role = c("aut", "cre"),
            email = "southandy@gmail.com",
            comment = c(ORCID = "0000-0003-4051-6135"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+           
+Description: Tutorials to introduce spatial data manipulation in R using African data. 
+   Aimed at those relatively new to R and/or spatial data.
+License: `use_mit_license()`
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
