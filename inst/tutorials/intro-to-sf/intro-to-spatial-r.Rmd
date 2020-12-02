@@ -8,23 +8,65 @@ description: >
 
 ```{r setup, include=FALSE}
 library(learnr)
-knitr::opts_chunk$set(echo = FALSE)
+
+# default options for all chunks
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE )
+
+# working with vector data
+library(sf) 
+
+# data wrangling
+library(dplyr) 
+
+# interactive mapping
+library(mapview) 
+
+# example data
+library(afrilearndata)
+
+# static and interactive mapping
+library(tmap)
+
+# for raster manipulation
+library(raster)
+
 ```
 
-This is an entry level introduction to spatial data in R using examples from Africa.
+This is an entry level introduction to spatial data in R using examples from Africa. It is aimed at those with a little knowledge of R.
 
-It is aimed at those with a little knowledge of R.
 
-## Spatial data
+## Spatial data outline
 
-We will be looking at the following spatial data for Africa. 
+We will start by looking at these spatial data for Africa, shown in the map below. 
 
 1. Capital city locations (points)
 1. A highway network (lines)
 1. Country boundaries (polygons)
 1. Population density (gridded or raster data)
 
-The first 3 data types are termed **vector data** and the final one is **raster data**.
+```{r tmap-first-view, echo=FALSE}
+#echo=FALSE to not show code in first version 
+
+# tmap_mode("view") to set to tmap interactive viewing mode
+
+tm_shape(afripop2020) +
+    tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
+tm_shape(africountries) +
+    tm_borders("white", lwd = .5) +
+    #tm_text("iso_a3", size = "AREA") +
+tm_shape(afrihighway) +
+    tm_lines(col = "black") + 
+tm_shape(africapitals) +
+    tm_symbols(col = "blue", alpha=0.4, scale = .6 )+
+tm_legend(show = FALSE)
+```
+
+
+Cities, highways and boundaries are examples of point, line and polygon data termed **vector data**. 
+
+The gridded population density data are termed **raster data**.
+
+In R there is often more than one package that does the same thing. Which one is 'best' for you may depend on preference and can change over time. This is true for R spatial operations.  
 
 In R the `sf` package deals with vector data (points, lines and polygons), and the `raster` package deals with raster data.
 
@@ -62,36 +104,39 @@ library(afrilearndata)
 
 ```
 
-If you happen to get messages indicating any of the packages are not installed you can use the code below to install them.
+If you happen to get messages indicating any of the packages are not installed you can use `install.packages` to install them.
 
-TODO do I want to put installation code in ? try to avoid danger that learners run it anyway when it is not needed ?
+[TODO do I want to put installation code in ? try to avoid danger that learners run it anyway when it is not needed ?]
 
 
-### 
+## First look at spatial data objects 
+
+We are going to take a look at the spatial data objects used to create the map shown at the start of the tutorial.
+
+We call them 'objects' because the data are already stored in R. This is also to make clear the difference from a 'file' that is stored elsewhere on your computer. A 'file' can be read into an R 'object' and we will come to that later.  
+
+First we will look at capital cities which are stored in an object called `africapitals`.
+
+```{r sf-points, exercise=TRUE, exercise.lines = 5}
+
+plot(africapitals)
+#plot(sf::st_geometry(africapitals))
+
+```
+
 
 An sf object is a dataframe with one row per feature and a column called geometry that contains the spatial information.
 
 Use names() to see what columns there are. Then try changing the plot to show data from a different column.
 
-```{r sf-object, exercise=TRUE, exercise.lines = 5}
-
-library(rnaturalearth)
-library(sf)
-
-sf_africa <- ne_countries(continent = 'Africa', returnclass = 'sf')
-
-names(sf_africa)
-
-plot(sf_africa["pop_est"])
-
-```
 
 
 
 
 
 
-### FROM HERE OLD STUFF MAYBE TO RE_USE
+
+## FROM HERE OLD STUFF MAYBE TO RE_USE
 
 ### Other sources of geographic data in R
 
