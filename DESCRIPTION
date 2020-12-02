@@ -25,7 +25,16 @@ Suggests:
     learnr
 Imports: 
     sf,
-    raster,
-    afrilearndata (>= 0.0.0.9000)
-Remotes:  
-    afrimapr/afrilearndata
+    dplyr,
+    ggplot2,
+    mapview,
+    gapminder,
+    tmap,
+    kableExtra,
+    viridisLite
+Remotes:
+    rstudio/fontawesome,
+    afrimapr/afrilearndata  
+    
+    
+    
