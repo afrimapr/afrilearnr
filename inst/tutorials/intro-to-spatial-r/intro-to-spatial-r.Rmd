@@ -75,7 +75,7 @@ There are other packages too but we don't need those for now.
 
 ## Loading packages and data
 
-Packages in R contain extra methods and data not available in base R.
+Packages in R contain extra methods and data to add to base R.
 
 We will be loading one package (`afrilearndata`) containing example data for us to look at.
 
@@ -89,7 +89,7 @@ A package may have been installed already on your system because it is a 'depend
 
 In this case the packages `afrilearndata`, `sf` and `raster` should already have been installed when you installed this package.
 
-To check that the packages have been installed try running the `library` commands below :
+To check that the packages have been installed try running the `library` commands below. If they have been installed nothing should happen. Not very interesting but a good check and a good reminder that this is what you will need to do each time you start a new R session.
 
 ```{r library_packages, exercise = TRUE, exercise.eval = FALSE, message = FALSE, warning = FALSE}
 
@@ -117,17 +117,42 @@ We call them 'objects' because the data are already stored in R. This is also to
 
 First we will look at capital cities which are stored in an object called `africapitals`.
 
-```{r sf-points, exercise=TRUE, exercise.lines = 5}
+Using the plot method should display a number of maps of the point locations of African capitals. 
+
+```{r sf-points-plot, exercise=TRUE, exercise.lines = 5}
 
 plot(africapitals)
 #plot(sf::st_geometry(africapitals))
 
 ```
 
+This uses the plot function defined in the `sf` package. It creates a series of maps in each one the points are coloured according to the values stored in one column. But we are getting ahead of ourselves, let us have a look at the structure of the object itself.
 
-An sf object is a dataframe with one row per feature and a column called geometry that contains the spatial information.
+In R there are various functions that can help us explore what an object contains. We find these particularly useful, there is some overlap between them.
 
-Use names() to see what columns there are. Then try changing the plot to show data from a different column.
+1. str()        structure of the object, displays both names and values
+1. head()       displays the first values and their names
+1. names()      gives just column names
+1. class()      gives the class of the object, broadly what sort of object it is  
+
+Have a look at the outputs for `africapitals` :
+
+```{r sf-points-str, exercise=TRUE, exercise.lines = 5}
+
+str(africapitals)
+head(africapitals)
+names(africapitals)
+class(africapitals)
+
+```
+
+These show us that `africapitals` is of class `sf` and `data.frame` and contains a series of columns including ones named : 'capitalname', 'countryname' and 'geometry'.
+
+`data.frame`, often referred to as just dataframe, is the most common object type in R certainly for new users. Dataframes store data in rows and named columns like a spreadsheet. 
+
+`sf` objects are a special type dataframe with a column called 'geometry' that contains the spatial information, and one row per feature.
+
+
 
 
 
@@ -137,6 +162,8 @@ Use names() to see what columns there are. Then try changing the plot to show da
 
 
 ## FROM HERE OLD STUFF MAYBE TO RE_USE
+
+Use names() to see what columns there are. Then try changing the plot to show data from a different column.
 
 ### Other sources of geographic data in R
 
