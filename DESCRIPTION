@@ -16,7 +16,7 @@ Authors@R:
     )
 Description: Tutorials to introduce spatial data manipulation in R using African data. 
    Aimed at those relatively new to R and/or spatial data.
-License: `use_mit_license()`
+License: CC BY-SA 4.0
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
