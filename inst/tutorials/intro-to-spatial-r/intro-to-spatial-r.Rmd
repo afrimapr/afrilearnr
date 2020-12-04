@@ -176,10 +176,10 @@ If you look at the output from the `head()` command above you should see that ea
 
 
 
+## old stuff
 
 
-
-## FROM HERE OLD STUFF MAYBE TO RE_USE
+### FROM HERE OLD STUFF MAYBE TO RE_USE
 
 Use names() to see what columns there are. Then try changing the plot to show data from a different column.
 
@@ -211,8 +211,6 @@ plot(sf_africa["pop_est"])
 [https://github.com/rstudio/learnr/issues/72]
 [NOTE can use exercise.setup='setupA' to make chunks dependent on previous setup or exercise chunks ]
 
-
-## next Topic
 
 ### Exercise with Hint
 
