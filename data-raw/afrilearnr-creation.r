@@ -32,8 +32,14 @@ usethis::use_dev_package("afrilearndata") # to add in development package depend
 usethis::use_package("sf")
 usethis::use_package("raster")
 
+# ignore all dcf (shinyapps) files in check
+use_build_ignore("[.]dcf$", escape = FALSE)
+#use_build_ignore("[.]xlsx$", escape = FALSE)
+
 
 # create data-raw to save this script that creates the package
 usethis::use_data_raw()
 # I renamed default DATASET.R to this afrilearnr-creation.r
+
+
 
