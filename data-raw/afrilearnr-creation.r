@@ -36,6 +36,8 @@ usethis::use_package("raster")
 use_build_ignore("[.]dcf$", escape = FALSE)
 #use_build_ignore("[.]xlsx$", escape = FALSE)
 
+# add a crash course tutorial
+usethis::use_tutorial("afrilearnr-crash-course", "A crash course to spatial in R with African data")
 
 # create data-raw to save this script that creates the package
 usethis::use_data_raw()
