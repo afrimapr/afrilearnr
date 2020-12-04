@@ -152,6 +152,8 @@ These show us that `africapitals` is of class `sf` and `data.frame` and contains
 
 `sf` objects are a special type dataframe with a column called 'geometry' that contains the spatial information, and one row per feature.
 
+If you look at the output from the `head()` command above you should see that each cell in the geometry column contains elements like this 'POINT (7.17 9.18)'. Because the capitals data are points they just have a single coordinate pair representing the longitude and latitude.
+
 
 
 
