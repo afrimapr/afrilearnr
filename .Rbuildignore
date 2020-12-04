@@ -1,6 +1,8 @@
 ^afrilearnr\.Rproj$
 ^\.Rproj\.user$
-^inst/tutorials/intro-to-sf/intro-to-sf\.Rmd$
+^inst/tutorials/intro-to-spatial-r/intro-to-spatial-r\.Rmd$
+^inst/tutorials/join-admin/join-admin\.Rmd$
+^inst/tutorials/afrilearnr-crash-course/afrilearnr-crash-course\.Rmd$
 ^data-raw$
 [.]dcf$
-^inst/tutorials/afrilearnr-crash-course/afrilearnr-crash-course\.Rmd$
+
