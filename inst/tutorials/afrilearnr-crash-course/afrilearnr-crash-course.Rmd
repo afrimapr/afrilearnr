@@ -1,5 +1,5 @@
 ---
-title: "A crash course to spatial in R with African data"
+title: "A crash course in R mapping with African data"
 output: learnr::tutorial
 runtime: shiny_prerendered
 description: >
@@ -11,6 +11,8 @@ library(learnr)
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+## Intro to afrilearnr & this crash course
+
 The [afrilearnr](https://github.com/afrimapr/afrilearnr) package contains tutorials to teach spatial in R with African data. It is part of the [afrimapr](https://afrimapr.github.io/afrimapr.website/) project.
 
 This is a crash course going straight to the endpoints of other tutorials. It provides the code to create maps that you can experiment with. It has minimal explanation. If you want more explanation consult the other tutorials.
@@ -20,6 +22,7 @@ Through the magic of [learnr](https://rstudio.github.io/learnr/) you can modify 
 If you are accessing this from shinyapps you can also install [afrilearnr from github](https://github.com/afrimapr/afrilearnr) and run these tutorials locally.
 
 
+First loading required packages, if you see any warnings below you may need to install those you don't have.
 ```{r library_packages, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
 library(sf)     # for vector data handling
@@ -27,6 +30,9 @@ library(raster) # for raster data handling
 library(tmap) # static & interactive mapping
 library(mapview) #interactive mapping
 library(afrilearndata) # example spatial data for Africa
+
+#you may need :
+#remotes::install_github("afrimapr/afrilearnr")
 
 # temporary fix for shinyapps & may help with users too
 sf::st_crs(africapitals) <- 4326
@@ -36,7 +42,7 @@ sf::st_crs(africontinent) <- 4326
 
 ```
 
-## tmap to map vector and raster data
+## tmap : map vector and raster data
 
 ```{r tmap-vector-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
@@ -53,16 +59,27 @@ tm_legend(show = FALSE)
 
 ```
 
-## tmap to colour polygons according to data values
+## tmap : colour polygons by data values
 
 ```{r tmap-colour-polygons, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
 tm_shape(africountries) +
     tm_polygons("pop_est")
-    #try commenting out above line and replacing with this
+    #try commenting out above line and uncommenting that below
     #tm_polygons("income_grp")
 
 ```
+
+## mapview : interactive map of points
+
+```{r mapview-points, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+
+mapview(africapitals,
+        zcol = 'pop',
+        label = paste(africapitals$countryname,':',africapitals$capitalname))
+
+```
+
 
 
 
