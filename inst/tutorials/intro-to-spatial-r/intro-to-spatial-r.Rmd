@@ -49,7 +49,23 @@ We will start by looking at these spatial data for Africa, shown in the map belo
 
 # tmap_mode("view") to set to tmap interactive viewing mode
 
-tm_shape(afripop2020) +
+# getting error on deploying to shinyapps
+#Error in value[3L] :OGRCreateCoordinateTransformation() returned NULL: PROJ available?
+#potential solution
+#https://stackoverflow.com/questions/61286108/error-in-cpl-transformx-crs-aoi-pipeline-reverse-ogrcreatecoordinatetrans
+#If you save an sf-dataframe with a newer version of GDAL, and then try on a system with an older version of GDAL, the projection info cannot be read properly.
+#The solution is to re-set the projection:
+#st_crs(data) <- 4326
+
+sf::st_crs(africapitals) <- 4326
+sf::st_crs(afrihighway) <- 4326
+sf::st_crs(africountries) <- 4326
+sf::st_crs(africontinent) <- 4326 #not used yet but just in case
+
+#not the raster layer
+#st_crs(afripop2020) <- 4326
+
+tmap::tm_shape(afripop2020) +
     tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
 tm_shape(africountries) +
     tm_borders("white", lwd = .5) +
@@ -152,7 +168,7 @@ These show us that `africapitals` is of class `sf` and `data.frame` and contains
 
 `sf` objects are a special type dataframe with a column called 'geometry' that contains the spatial information, and one row per feature.
 
-If you look at the output from the `head()` command above you should see that each cell in the geometry column contains elements like this 'POINT (7.17 9.18)'. Because the capitals data are points they just have a single coordinate pair representing the longitude and latitude.
+If you look at the output from the `head()` command above you should see that each cell in the geometry column contains elements like this 'POINT (7.17 9.18)'. Because the capitals data are points they just have a single coordinate pair representing the longitude and latitude of each capital.
 
 
 
