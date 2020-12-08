@@ -142,7 +142,7 @@ plot(africapitals)
 
 ```
 
-This uses the plot function defined in the `sf` package. It creates a series of maps in each one the points are coloured according to the values stored in one column. But we are getting ahead of ourselves, let us have a look at the structure of the object itself.
+This uses the plot function defined in the `sf` package. It creates a series of maps in each one the points are coloured according to the values stored in one column. There is a function in sf called `st_geometry()` that allows you to get just the spatial parts without the attributes and you can see the result of that by removing the # in front of the 2nd line of code in the window above and pressing 'Run code'.  But we are getting ahead of ourselves, let us have a look at the structure of the object itself.
 
 In R there are various functions that can help us explore what an object contains. We find these particularly useful, there is some overlap between them.
 
@@ -166,9 +166,9 @@ These show us that `africapitals` is of class `sf` and `data.frame` and contains
 
 `data.frame`, often referred to as just dataframe, is the most common object type in R certainly for new users. Dataframes store data in rows and named columns like a spreadsheet. 
 
-`sf` objects are a special type dataframe with a column called 'geometry' that contains the spatial information, and one row per feature.
+`sf` objects are a special type dataframe with a column called 'geometry' that contains the spatial information, and one row per feature. In this case the features are points.
 
-If you look at the output from the `head()` command above you should see that each cell in the geometry column contains elements like this 'POINT (7.17 9.18)'. Because the capitals data are points they just have a single coordinate pair representing the longitude and latitude of each capital.
+If you look at the output from the `str()` command above you should see that the first value in the geometry column has the coordinates 7.17 9.18. Because the capitals data are points they just have a single coordinate pair representing the longitude and latitude of each capital.
 
 
 
