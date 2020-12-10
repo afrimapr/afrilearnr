@@ -151,14 +151,14 @@ In R there are various functions that can help us explore what an object contain
 1. names()      gives just column names
 1. class()      gives the class of the object, broadly what sort of object it is  
 
-Have a look at the outputs for `africapitals` :
+Have a look at the outputs for `africapitals`, uncomment the later lines to see their outputs :
 
 ```{r sf-points-str, exercise=TRUE, exercise.lines = 5}
 
 str(africapitals)
-head(africapitals)
-names(africapitals)
-class(africapitals)
+#head(africapitals)
+#names(africapitals)
+#class(africapitals)
 
 ```
 
@@ -170,10 +170,40 @@ These show us that `africapitals` is of class `sf` and `data.frame` and contains
 
 If you look at the output from the `str()` command above you should see that the first value in the geometry column has the coordinates 7.17 9.18. Because the capitals data are points they just have a single coordinate pair representing the longitude and latitude of each capital.
 
+The highway and countries objects are also of class `sf` and contain geometry columns. You can uncomment the lines below and run to see what is contained in the first cell of the geometry column for the other vector objects.
+
+```{r sf-points-lines-polygons, exercise=TRUE, exercise.lines = 5}
+
+africapitals$geometry[[1]]
+#afrihighway$geometry[[1]]
+#africountries$geometry[[1]]
+
+```
+
+You should have seen that the geometry columns for the other objects contain multiple coordinates representing lines and polygons.
 
 
+... to be continued
 
 
+## Quiz
+
+```{r quiz}
+quiz(
+  question("Which column contains spatial information in an `sf`object ?",
+    answer("spatial"),
+    answer("longitude"),
+    answer("geometry", correct = TRUE),
+    answer("name")
+  ),
+  question("Which R packages can be used to make maps ?",
+    answer("tmap", correct = TRUE),
+    answer("ggplot", correct = TRUE),
+    answer("sf", correct = TRUE),
+    answer("mapview", correct = TRUE)
+  )
+)
+```
 
 
 ## ...
@@ -196,10 +226,7 @@ Use names() to see what columns there are. Then try changing the plot to show da
 
 ```{r polygons-from-rnaturalearth, exercise=TRUE, exercise.lines = 5}
 
-  
-
 ```
-
 
 [NOTE can have setup and exercise chunks]
 [https://github.com/rstudio/learnr/issues/72]
@@ -207,11 +234,7 @@ Use names() to see what columns there are. Then try changing the plot to show da
 
 
 ### Exercise with Hint
-
-*Here's an exercise where the chunk is pre-evaulated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
-
 Modify the following code to limit the number of rows printed to 5:
-
 ```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
 mtcars
 ```
@@ -220,25 +243,4 @@ mtcars
 head(mtcars)
 ```
 
-### Quiz
 
-*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
-
-Some questions to verify that you understand the purposes of various base and recommended R packages:
-
-```{r quiz}
-quiz(
-  question("Which package contains functions for installing other R packages?",
-    answer("base"),
-    answer("tools"),
-    answer("utils", correct = TRUE),
-    answer("codetools")
-  ),
-  question("Which of the R packages listed below are used to create plots?",
-    answer("lattice", correct = TRUE),
-    answer("tools"),
-    answer("stats"),
-    answer("grid", correct = TRUE)
-  )
-)
-```
