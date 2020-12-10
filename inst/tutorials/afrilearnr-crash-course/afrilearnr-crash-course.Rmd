@@ -70,17 +70,31 @@ tm_shape(africountries) +
 
 ```
 
-## mapview : interactive map of points
+## mapview : interactive point data
 
 ```{r mapview-points, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
 mapview(africapitals,
         zcol = 'pop',
+        #cex = 'pop', #to size points by attribute
         label = paste(africapitals$countryname,':',africapitals$capitalname))
 
 ```
 
+## mapview : interactive points and lines
 
+Using `list(1,2)` to pass two layers and respective arguments.
+
+```{r mapview-points, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+
+mapview(list(africapitals, afrihighway),
+        zcol = list('pop','Name'),
+        legend = list(TRUE, FALSE),  
+        color = list(NULL, 'red'),
+        label = list(paste(africapitals$countryname,':',africapitals$capitalname),
+                     afrihighway$Name) )
+
+```
 
 
 
