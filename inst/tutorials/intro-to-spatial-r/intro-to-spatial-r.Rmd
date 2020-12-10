@@ -176,10 +176,10 @@ If you look at the output from the `str()` command above you should see that the
 
 
 
-## old stuff
+## ...
 
 
-### FROM HERE OLD STUFF MAYBE TO RE_USE
+### FROM HERE OLD STUFF TO RE_USE
 
 Use names() to see what columns there are. Then try changing the plot to show data from a different column.
 
@@ -196,12 +196,6 @@ Use names() to see what columns there are. Then try changing the plot to show da
 
 ```{r polygons-from-rnaturalearth, exercise=TRUE, exercise.lines = 5}
 
-library(rnaturalearth)
-library(sf)
-
-sf_africa <- ne_countries(continent = 'Africa', returnclass = 'sf')
-
-plot(sf_africa["pop_est"])
   
 
 ```
