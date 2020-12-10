@@ -70,6 +70,31 @@ tm_shape(africountries) +
 
 ```
 
+## ggplot : colour polygons by data values
+
+`ggrepel` helps avoid label overlap if plot is big enough, reduce label `size` to fit in smaller plots.
+Comment out `geom_text_repel` lines to remove labels.
+Comment out `theme_void()` to add axes back in.
+
+```{r ggplot-colour-polygons, exercise = TRUE, eval = TRUE, exercise.setup = "final_left_join2"}
+
+library(ggplot2)
+library(ggrepel)
+
+ggplot(africountries) +
+    geom_sf(aes(fill = pop_est)) +
+    scale_fill_viridis_c() +
+    theme_void() +
+    geom_text_repel(aes(label=name_long, geometry=geometry),
+                    stat="sf_coordinates",
+                    point.padding = NA, #allows points to overlap centroid
+                    colour='darkgrey', size=3
+                   ) +
+    labs(title = "Population by country 2000", fill = "Population Estimate")
+
+```
+
+
 ## mapview : interactive point data
 
 ```{r mapview-points, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
@@ -96,5 +121,20 @@ mapview(list(africapitals, afrihighway),
 
 ```
 
+## mapview : interactive raster
+
+Rasters are displayed semi-transparent by default so base layers including place names are visible. Population density data are often highly skewed with rare high values meaning that most variation gets hidden when using default data breaks between colours. Specifying near logarithmic breaks using `at` below makes patterns clearer.
+
+```{r mapview-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+
+
+mapview(afripop2020,
+        at = c(0,2,20,200,2000,25000))
+
+
+```
+
+
+[TODO add zooming to a defined area]
 
 
