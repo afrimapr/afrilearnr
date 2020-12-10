@@ -76,7 +76,7 @@ tm_shape(africountries) +
 Comment out `geom_text_repel` lines to remove labels.
 Comment out `theme_void()` to add axes back in.
 
-```{r ggplot-colour-polygons, exercise = TRUE, eval = TRUE, exercise.setup = "final_left_join2"}
+```{r ggplot-colour-polygons, exercise = TRUE, exercise.eval = TRUE, warning = FALSE}
 
 library(ggplot2)
 library(ggrepel)
