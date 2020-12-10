@@ -85,7 +85,7 @@ mapview(africapitals,
 
 Using `list(1,2)` to pass two layers and respective arguments.
 
-```{r mapview-points, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+```{r mapview-points-lines, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
 mapview(list(africapitals, afrihighway),
         zcol = list('pop','Name'),
