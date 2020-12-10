@@ -4,8 +4,9 @@ A collection of interactive `learnr` tutorials for making African maps.
 
 ## IN DEVELOPMENT
 
-For a draft demo of one tutorial see :
+For a draft demos of tutorials see :
 https://andysouth.shinyapps.io/intro-to-spatial-r/
+https://andysouth.shinyapps.io/afrilearnr-crash-course/
 
 The tutorials are saved as a package that can be installed and run locally.
 
