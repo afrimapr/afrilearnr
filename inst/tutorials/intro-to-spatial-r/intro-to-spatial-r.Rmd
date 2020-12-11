@@ -32,7 +32,15 @@ library(raster)
 
 ```
 
+## Intro to afrilearnr & this tutorial
+
+The [afrilearnr](https://github.com/afrimapr/afrilearnr) package contains tutorials to teach spatial in R with African data. It is part of the [afrimapr](https://afrimapr.github.io/afrimapr.website/) project.
+
 This is an entry level introduction to spatial data in R using examples from Africa. It is aimed at those with a little knowledge of R.
+
+Through the magic of [learnr](https://rstudio.github.io/learnr/) you can modify the R code in the boxes below and press run to see results.
+
+If you are accessing this from shinyapps you can also install [afrilearnr from github](https://github.com/afrimapr/afrilearnr) and run these tutorials locally.
 
 
 ## Spatial data outline
@@ -117,6 +125,9 @@ library(raster)
 
 # example spatial data for Africa
 library(afrilearndata)
+
+# for mapping
+library(tmap)
 
 ```
 
