@@ -30,6 +30,7 @@ Imports:
     mapview,
     gapminder,
     tmap,
+    rgdal,
     kableExtra,
     viridisLite
 Remotes:

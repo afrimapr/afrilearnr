@@ -30,11 +30,12 @@ library(raster) # for raster data handling
 library(tmap) # static & interactive mapping
 library(mapview) #interactive mapping
 library(afrilearndata) # example spatial data for Africa
+library(rgdal) #seems to be needed for mapview raster
 
 #you may need :
 #remotes::install_github("afrimapr/afrilearnr")
 
-# temporary fix for shinyapps & may help with users too
+#temporary fix for shinyapps & may help for users with an older version of rgdal
 sf::st_crs(africapitals) <- 4326
 sf::st_crs(afrihighway) <- 4326
 sf::st_crs(africountries) <- 4326
@@ -127,12 +128,12 @@ Rasters are displayed semi-transparent by default so base layers including place
 
 ```{r mapview-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
-
 mapview(afripop2020,
         at = c(0,2,20,200,2000,25000))
 
-
 ```
+
+Note that previously this failed on shinyapps : package 'rgdal' is not available. Why when the previous exercise worked is beyond me. Adding library(rgdal) at the start of this script fixed it. Strange because I would think that rgdal would be imported by mapview if needed.
 
 
 [TODO add zooming to a defined area]
