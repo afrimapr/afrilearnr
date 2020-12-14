@@ -19,6 +19,8 @@ This is a crash course going straight to the endpoints of other tutorials. It pr
 
 Through the magic of [learnr](https://rstudio.github.io/learnr/) you can modify the R code in the boxes below and press run to see results.
 
+Datasets are obtained from the [afrilearndata](https://github.com/afrimapr/afrilearndata) package that provides example point, line, polygon and raster data for Africa. 
+
 If you are accessing this from shinyapps you can also install [afrilearnr from github](https://github.com/afrimapr/afrilearnr) and run these tutorials locally.
 
 
