@@ -133,8 +133,6 @@ library(tmap)
 
 If you happen to get messages indicating any of the packages are not installed you can use `install.packages` to install them.
 
-[TODO do I want to put installation code in ? try to avoid danger that learners run it anyway when it is not needed ?]
-
 
 ## First look at spatial data objects 
 
