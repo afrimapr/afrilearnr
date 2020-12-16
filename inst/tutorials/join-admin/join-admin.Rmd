@@ -52,7 +52,7 @@ africa_gap <- gapminder %>%
                   filter(continent == "Africa",
                          year == 2007)
 
-knitr::opts_chunk$set()
+#knitr::opts_chunk$set()
 ```
 
 ## Introduction
@@ -70,6 +70,9 @@ Here we start to develop a checklist identifying code steps that users can work 
 
 
 ```{r tmap_data_sample, eval = TRUE, echo = FALSE, message = FALSE}
+
+#testing fix for shinyapps sf error
+library(sf)
 
 tmap_mode("view")
 

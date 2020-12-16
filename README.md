@@ -1,33 +1,52 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+<!-- used devtools::build_readme() to update the md -->
+
 # afrilearnr
 
-A growing collection of interactive `learnr` tutorials for making African maps.
+<!-- badges: start -->
+
+<!-- badges: end -->
+
+A growing collection of interactive
+[learnr](https://rstudio.github.io/learnr/) tutorials for making African
+maps.
 
 ## IN DEVELOPMENT
 
-For a draft demos of tutorials see :     
+For a draft demos of tutorials see :
 
-https://andysouth.shinyapps.io/intro-to-spatial-r/
-https://andysouth.shinyapps.io/afrilearnr-crash-course/
+1.  [intro-to-spatial-r](https://andysouth.shinyapps.io/intro-to-spatial-r/)
+2.  [afrilearnr-crash-course](https://andysouth.shinyapps.io/afrilearnr-crash-course/)
 
-The tutorials are saved as a package that can be installed and run locally in RStudio.
+The tutorials are saved as a package that can be installed and run
+locally in RStudio.
 
+## Getting started
 
-## First use
+1.  Install the package from GitHub from the R console.
 
+<!-- end list -->
 
-1. Install the package from GitHub from the R console.
+``` r
+# install.packages("remotes") # if not already installed
+remotes::install_github("afrimapr/afrilearnr")
+```
 
-    `# install.packages("remotes") # if not already installed`
-    
-    `remotes::install_github("afrimapr/afrilearnr")`
-    
+2.  Load the package
 
-2. Load the package
+<!-- end list -->
 
-    `library(afrilearnr)`
-    
-3. In RStudio Click on the *Tutorial* tab at the top right, choose an afrilearnr tutorial, and click *Start Tutorial ?*
+``` r
+library(afrilearnr)
+```
 
-Alternatively you can start a tutorial by name from the R console :     
+3.  In RStudio Click on the *Tutorial* tab at the top right, choose an
+    afrilearnr tutorial, and click *Start Tutorial ?*
 
-`learnr::run_tutorial("join-admin", "afrilearnr"))`
+Alternatively you can start a tutorial by name from the R console :
+
+``` r
+learnr::run_tutorial("join-admin", "afrilearnr")
+```
