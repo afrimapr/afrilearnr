@@ -49,6 +49,8 @@ sf::st_crs(africontinent) <- 4326
 
 ```{r tmap-vector-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
+#tmap_mode('view') #tmap uses static 'plot' mode by default, uncomment this to change to interactive 'view' mode
+
 tmap::tm_shape(afripop2020) +
     tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
 tm_shape(africountries) +
@@ -65,6 +67,8 @@ tm_legend(show = FALSE)
 ## tmap : colour polygons by data values
 
 ```{r tmap-colour-polygons, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+
+#tmap_mode('view') #tmap uses static 'plot' mode by default, uncomment this to change to interactive 'view' mode
 
 tm_shape(africountries) +
     tm_polygons("pop_est")
@@ -137,7 +141,30 @@ mapview(afripop2020,
 
 Note that previously this failed on shinyapps : package 'rgdal' is not available. Why when the previous exercise worked is beyond me. Adding library(rgdal) at the start of this script fixed it. Strange because I would think that rgdal would be imported by mapview if needed.
 
+## display one country
 
-[TODO add zooming to a defined area]
+We can select one row from `africountries` in `afrilearndata` to allow us to display a country, using the `bbox` argument in tmap, the `ext` argument allows us to extend the bbox a little.
+
+
+```{r mapview-one-country, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+
+tmap_mode('view') #tmap uses static 'plot' mode by default, uncomment this to change to interactive 'view' mode
+#tmap_mode('plot') #to change back to static 'plot' mode
+
+country_name <- "Mozambique" #"Botswana" # names need to match exactly, can also use name_fr etc.
+
+sfcountry <- dplyr::filter(africountries, name==country_name)
+
+tmap::tm_shape(afripop2020, bbox=sf::st_bbox(sfcountry), ext=1.1) +
+    tm_raster(palette = rev(viridisLite::viridis(5)), breaks=c(0,2,20,200,2000,25000)) +
+    tm_layout(main.title=country_name, legend.outside=TRUE) +
+tm_shape(africountries) +
+    tm_borders("grey", lwd = 2) 
+
+```
+
+
+
+[TODO add osmdata]
 
 
