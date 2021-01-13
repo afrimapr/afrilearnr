@@ -39,6 +39,10 @@ use_build_ignore("[.]dcf$", escape = FALSE)
 # add a crash course tutorial
 usethis::use_tutorial("afrilearnr-crash-course", "A crash course to spatial in R with African data")
 
+# add a test tutorial to try to address issue in join not recognising packages
+usethis::use_tutorial("test-sf", "test shinyapps not finding packages in join tutorial")
+
+
 # create data-raw to save this script that creates the package
 usethis::use_data_raw()
 # I renamed default DATASET.R to this afrilearnr-creation.r

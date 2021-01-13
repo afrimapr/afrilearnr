@@ -1,0 +1,149 @@
+---
+title: "test shinyapps not finding packages in join tutorial"
+output: learnr::tutorial
+runtime: shiny_prerendered
+description: >
+  Learn how to join spatial data with a data.frame to create a map. 
+---
+
+```{r setup, include=FALSE}
+
+# To install a package
+#usethis::use_package("<external-package>")
+
+#allow_skip: true
+
+# library to run the tutorial
+library(learnr)
+#knitr::opts_chunk$set()
+
+```
+
+
+```{r library_packages, include=FALSE}
+
+# working with geographic data
+library(sf) 
+
+#plotting and data wrangling
+#library(tidyverse) #reducing dependencies
+library(dplyr)
+library(ggplot2)
+
+# plotting and exploring geographic data
+library(mapview) 
+
+# gapminder data
+library(gapminder) 
+
+# afrilearndata
+library(afrilearndata)
+
+# include leaflet for mapping
+library(leaflet)
+
+# interactive map using tmap
+library(tmap)
+
+# icons
+library(fontawesome)
+
+# tables
+library(kableExtra)
+
+# labels
+library(ggrepel)
+
+# Set up the first data.frame
+africa_gap <- gapminder %>%
+                  filter(continent == "Africa",
+                         year == 2007)
+```
+
+## Introduction
+
+There are usually difficulties in joining data to spatial admin boundaries due to spelling, capitalisation, accents etc. Afrimapr wants to improve that, particularly for users relatively new to these issues.
+
+
+Here we start to develop a checklist identifying code steps that users can work through to aid the joining process.
+
+### **Use-case:** 
+
+* You want to plot data on a map but the data only have names of regions or places. 
+
+* You also can get some spatial data (e.g. `africountries.shp`) that does have the coordinates of the regions or places.
+
+
+```{r tmap_data_sample, eval = TRUE, echo = FALSE, message = FALSE, warning=FALSE}
+
+#temporary fix for shinyapps & may help for users with an older version of rgdal
+sf::st_crs(africapitals) <- 4326
+sf::st_crs(afrihighway) <- 4326
+sf::st_crs(africountries) <- 4326
+sf::st_crs(africontinent) <- 4326 
+
+tmap_mode("view")
+
+t <-  tm_shape(africountries) +
+      tm_polygons(col = "tan", alpha = 0.2, border.col = "black") +
+      tm_shape(afripop2000)  +
+      tm_raster(palette = terrain.colors(10), style="fisher") +
+      tm_shape(afripop2020)  +
+      tm_raster(palette = terrain.colors(10), style="fisher") +
+      tm_shape(afrihighway) +
+      tm_lines(col = "red") + 
+      tm_shape(africapitals) +
+      tm_symbols(col = "blue", shape= 1, scale = 0.7) + #shape=1 for open circle
+      tm_legend(show = TRUE)
+
+t %>% 
+  tmap_leaflet() %>%
+  leaflet::hideGroup("africapitals") %>%
+  leaflet::hideGroup("afripop2000") %>%
+  leaflet::hideGroup("afrihighway") %>%
+  leaflet::hideGroup("afripop2020")
+
+```
+
+* The data you have are in a spreadsheet type format and the spatial data are in some kind of GIS format (e.g. .shp).
+
+* To create the map, you need to join the two datasets in order to create your map. This requires identifying the columns with the admin names, checking for misspellings, and joining them together.
+
+    * **Joining your data.frame:**
+
+```{r country_names2, eval = TRUE, echo = FALSE, message = FALSE}
+
+africa_gap_ex <- gapminder %>%
+                  filter(continent == "Africa", year == 2007) %>%
+                  select(country, gdpPercap) %>%
+                  head()
+
+africa_gap_ex %>%
+  kable() %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>% 
+  scroll_box(width = "80", height = "200px")
+
+```
+
+
+  * **To the spatial information:**
+    
+
+```{r geographic_data_sample, eval = TRUE, echo = FALSE, message = FALSE}
+
+africountries <- sf::read_sf(system.file("extdata/africountries.shp", package="afrilearndata"))
+
+africountries %>%
+      arrange(name_long) %>%
+      select(name_long, geometry) %>%
+      head() %>%
+      kable() %>% 
+      kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>% 
+      scroll_box(width = "80", height = "200px")
+
+
+```
+
+
+
+
