@@ -1,8 +1,6 @@
 ---
 title: "Join spatial data with a data.frame"
-output: 
-  learnr::tutorial:
-    allow_skip: true
+output: learnr::tutorial
 runtime: shiny_prerendered
 description: >
   Learn how to join spatial data with a data.frame to create a map. 
@@ -13,14 +11,24 @@ description: >
 # To install a package
 #usethis::use_package("<external-package>")
 
+#allow_skip: true
+
 # library to run the tutorial
 library(learnr)
+#knitr::opts_chunk$set()
+
+```
+
+
+```{r library_packages, include=FALSE}
 
 # working with geographic data
 library(sf) 
 
 #plotting and data wrangling
-library(tidyverse) 
+#library(tidyverse) #reducing dependencies
+library(dplyr)
+library(ggplot2)
 
 # plotting and exploring geographic data
 library(mapview) 
@@ -46,13 +54,10 @@ library(kableExtra)
 # labels
 library(ggrepel)
 
-
 # Set up the first data.frame
 africa_gap <- gapminder %>%
                   filter(continent == "Africa",
                          year == 2007)
-
-#knitr::opts_chunk$set()
 ```
 
 ## Introduction
@@ -69,10 +74,13 @@ Here we start to develop a checklist identifying code steps that users can work 
 * You also can get some spatial data (e.g. `africountries.shp`) that does have the coordinates of the regions or places.
 
 
-```{r tmap_data_sample, eval = TRUE, echo = FALSE, message = FALSE}
+```{r tmap_data_sample, eval = TRUE, echo = FALSE, message = FALSE, warning=FALSE}
 
-#testing fix for shinyapps sf error
-library(sf)
+#temporary fix for shinyapps & may help for users with an older version of rgdal
+sf::st_crs(africapitals) <- 4326
+sf::st_crs(afrihighway) <- 4326
+sf::st_crs(africountries) <- 4326
+sf::st_crs(africontinent) <- 4326 
 
 tmap_mode("view")
 
