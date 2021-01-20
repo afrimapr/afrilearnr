@@ -3,8 +3,11 @@ title: "test shinyapps not finding packages in join tutorial"
 output: learnr::tutorial
 runtime: shiny_prerendered
 description: >
-  Learn how to join spatial data with a data.frame to create a map. 
+  test sf 
 ---
+
+Trying to diagnose why join tutorial not working on shinyapps
+Could it be a tmap issue ?
 
 ```{r setup, include=FALSE}
 
@@ -60,18 +63,6 @@ africa_gap <- gapminder %>%
                          year == 2007)
 ```
 
-## Introduction
-
-There are usually difficulties in joining data to spatial admin boundaries due to spelling, capitalisation, accents etc. Afrimapr wants to improve that, particularly for users relatively new to these issues.
-
-
-Here we start to develop a checklist identifying code steps that users can work through to aid the joining process.
-
-### **Use-case:** 
-
-* You want to plot data on a map but the data only have names of regions or places. 
-
-* You also can get some spatial data (e.g. `africountries.shp`) that does have the coordinates of the regions or places.
 
 
 ```{r tmap_data_sample, eval = TRUE, echo = FALSE, message = FALSE, warning=FALSE}
@@ -105,44 +96,7 @@ t %>%
 
 ```
 
-* The data you have are in a spreadsheet type format and the spatial data are in some kind of GIS format (e.g. .shp).
 
-* To create the map, you need to join the two datasets in order to create your map. This requires identifying the columns with the admin names, checking for misspellings, and joining them together.
-
-    * **Joining your data.frame:**
-
-```{r country_names2, eval = TRUE, echo = FALSE, message = FALSE}
-
-africa_gap_ex <- gapminder %>%
-                  filter(continent == "Africa", year == 2007) %>%
-                  select(country, gdpPercap) %>%
-                  head()
-
-africa_gap_ex %>%
-  kable() %>% 
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>% 
-  scroll_box(width = "80", height = "200px")
-
-```
-
-
-  * **To the spatial information:**
-    
-
-```{r geographic_data_sample, eval = TRUE, echo = FALSE, message = FALSE}
-
-africountries <- sf::read_sf(system.file("extdata/africountries.shp", package="afrilearndata"))
-
-africountries %>%
-      arrange(name_long) %>%
-      select(name_long, geometry) %>%
-      head() %>%
-      kable() %>% 
-      kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>% 
-      scroll_box(width = "80", height = "200px")
-
-
-```
 
 
 

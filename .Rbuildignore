@@ -7,3 +7,4 @@
 [.]dcf$
 
 ^README\.Rmd$
+^inst/tutorials/test-sf/test-sf\.Rmd$
