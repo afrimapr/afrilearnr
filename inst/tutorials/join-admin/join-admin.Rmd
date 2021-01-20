@@ -62,14 +62,8 @@ africa_gap <- gapminder %>%
 
 ## Introduction
 
-There are usually difficulties in joining data to spatial admin boundaries due to spelling, capitalisation, accents etc. Afrimapr wants to improve that, particularly for users relatively new to these issues.
 
-
-Here we start to develop a checklist identifying code steps that users can work through to aid the joining process.
-
-### **Use-case:** 
-
-* You want to plot data on a map but the data only have names of regions or places. 
+* You want to plot your data on a map but the data only have names of regions or places. 
 
 * You also can get some spatial data (e.g. `africountries.shp`) that does have the coordinates of the regions or places.
 
@@ -107,7 +101,7 @@ t %>%
 
 * The data you have are in a spreadsheet type format and the spatial data are in some kind of GIS format (e.g. .shp).
 
-* To create the map, you need to join the two datasets in order to create your map. This requires identifying the columns with the admin names, checking for misspellings, and joining them together.
+* To create the map, you need to join the two datasets in order to create your map. This requires identifying the columns with the admin names and joining them together.
 
     * **Joining your data.frame:**
 
@@ -155,6 +149,11 @@ africountries %>%
   scroll_box(width = "80", height = "200px")
 
 ```
+
+It sounds like a piece of cake, however, there are often small snags hidden along the way such as difficulties in joining data to spatial admin boundaries due to spelling, capitalisation, accents etc, and so on.
+
+In this tutorial, we present a road map comprising a series of steps that can help new users navigate the joining process and avoid common pitfalls.
+
 
 <style>
 div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
