@@ -1,29 +1,30 @@
 ---
-title: "test shinyapps not finding packages in join tutorial"
+title: "small tutorial for testing shinyapps deployment"
 output: learnr::tutorial
 runtime: shiny_prerendered
 description: >
   test sf 
 ---
 
-Trying to diagnose why join tutorial not working on shinyapps
-Could it be a tmap issue ?
+For diagnosis of why the join tutorial didn't work on shinyapps.
+Now fixed and this should work too
+
 
 ```{r setup, include=FALSE}
 
-# To install a package
-#usethis::use_package("<external-package>")
-
-#allow_skip: true
-
 # library to run the tutorial
 library(learnr)
-#knitr::opts_chunk$set()
-
 ```
 
 
 ```{r library_packages, include=FALSE}
+
+# previously in join-admin got :
+# Error in value[[3L]](cond) : there is no package called 'sf'
+# turned out to be an issue with the fill-the-blanks sections lower down
+# updating to dev version of packrat locally fixed deployment
+# remotes::install_github('rstudio/packrat')
+# see https://github.com/afrimapr/afrilearnr/issues/4#issue-791404707
 
 # working with geographic data
 library(sf) 
@@ -93,6 +94,32 @@ t %>%
   leaflet::hideGroup("afripop2000") %>%
   leaflet::hideGroup("afrihighway") %>%
   leaflet::hideGroup("afripop2020")
+
+```
+
+```{r filter_gapminder_prep, echo = FALSE}
+
+africa_gap <- gapminder %>%
+                  filter(continent == "Africa",
+                         year == 2007)
+
+```
+
+```{r final_left_join2, echo = FALSE}
+
+africa_df <- dplyr::left_join(x = africountries, 
+                                        y = africa_gap, 
+                                        by = c("name_long" = "country")
+                                        ) %>%
+  mutate(pop_est = as.numeric(pop_est))
+
+```
+
+```{r plot3, exercise = TRUE, eval = TRUE, exercise.setup = "final_left_join2"}
+
+ggplot(data = africa_df) +
+    geom_sf(aes(fill = pop_est)) +
+    scale_fill_viridis_c()
 
 ```
 
