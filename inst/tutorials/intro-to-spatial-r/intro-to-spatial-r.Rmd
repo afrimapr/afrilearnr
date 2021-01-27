@@ -215,41 +215,19 @@ quiz(
 ```
 
 
-## ...
+```{r old-to-reuse}
 
-
-### FROM HERE OLD STUFF TO RE_USE
-
-Use names() to see what columns there are. Then try changing the plot to show data from a different column.
+#Use names() to see what columns there are. Then try changing the plot to show data from a different column.
 
 ### Other sources of geographic data in R
+#1. existing packages
+#1. local files (that we may have downloaded)
+#1. internet
+#1. created by hand in R
 
-1. existing packages
-1. local files (that we may have downloaded)
-1. internet
-1. created by hand in R
-
-### polygon data from an existing package
-
-*code to load some polygon data from an existing package*
-
-```{r polygons-from-rnaturalearth, exercise=TRUE, exercise.lines = 5}
+#[NOTE can have setup and exercise chunks]
+#[https://github.com/rstudio/learnr/issues/72]
+#[NOTE can use exercise.setup='setupA' to make chunks dependent on previous setup or exercise chunks ]
 
 ```
-
-[NOTE can have setup and exercise chunks]
-[https://github.com/rstudio/learnr/issues/72]
-[NOTE can use exercise.setup='setupA' to make chunks dependent on previous setup or exercise chunks ]
-
-
-### Exercise with Hint
-Modify the following code to limit the number of rows printed to 5:
-```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
-mtcars
-```
-
-```{r print-limit-hint}
-head(mtcars)
-```
-
 
