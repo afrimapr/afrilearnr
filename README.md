@@ -19,8 +19,10 @@ For a draft demos of tutorials see :
 
 1.  [intro-to-spatial-r](https://andysouth.shinyapps.io/intro-to-spatial-r/)
 2.  [afrilearnr-crash-course](https://andysouth.shinyapps.io/afrilearnr-crash-course/)
+3.  [joining spreadsheet data to a
+    map](https://andysouth.shinyapps.io/join-admin/)
 
-The tutorials are saved as a package that can be installed and run
+The tutorials are saved as a package that can also be installed and run
 locally in RStudio.
 
 ## Getting started
