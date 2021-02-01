@@ -183,16 +183,59 @@ The highway and countries objects are also of class `sf` and contain geometry co
 
 ```{r sf-points-lines-polygons, exercise=TRUE, exercise.lines = 5}
 
-africapitals$geometry[[1]]
-#afrihighway$geometry[[1]]
-#africountries$geometry[[1]]
+africapitals$geometry[1]
+#afrihighway$geometry[1]
+#africountries$geometry[1]
 
 ```
 
 You should have seen that the geometry columns for the other objects contain multiple coordinates representing lines and polygons.
 
+## mapping spatial data objects with tmap 
 
-... to be continued
+There are a number of packages for making maps extend what is available from sf.
+
+Package tmap is a good place to start, it offers both static and interactive mapping.
+
+We can start with static plots of the capitals (points).
+
+```{r tmap-points1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+
+tm_shape(africapitals) +
+  tm_symbols()              #default grey points
+  #tm_symbols(col = "blue") #set colour directly
+  #tm_symbols(col = "pop")  #set colour to a data column
+
+```
+
+Next trying the highway network (lines).
+
+```{r tmap-lines1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+
+
+tm_shape(afrihighway) +
+    tm_lines()  
+    #tm_lines(col = "red")
+
+```
+
+Thirdly mapping the countries (polygons).
+
+```{r tmap-polygons1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+
+#tmap_mode('view') #tmap uses static 'plot' mode by default, uncomment this to change to interactive 'view' mode
+
+tm_shape(africountries) +
+    tm_polygons()  
+    #tm_polygons("pop_est")
+    #try commenting out above line and uncommenting that below
+    #tm_polygons("income_grp")
+
+```
+
+
+
+
 
 
 ## Quiz
