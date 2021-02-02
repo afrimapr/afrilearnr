@@ -12,14 +12,17 @@ library(learnr)
 # default options for all chunks
 knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE )
 
+# exercise options
+#tutorial_options(exercise.lines=5)
+
 # working with vector data
 library(sf) 
 
 # data wrangling
-library(dplyr) 
+#library(dplyr) 
 
 # interactive mapping
-library(mapview) 
+#library(mapview) 
 
 # example data
 library(afrilearndata)
@@ -106,8 +109,9 @@ We will be loading one package (`afrilearndata`) containing example data for us 
 And the packages `sf` and `raster` allowing us to deal with vector and raster data.
 
 To use an R package requires a 2 step process :
-1. installation               needed infrequently from the internet
-1. library([package_name])    needed each time you start a new R session
+
+1. `install.packages`               needed infrequently from the internet
+1. `library([package_name])`        needed each time you start a new R session
 
 A package may have been installed already on your system because it is a 'dependency' needed for another package.
 
@@ -134,7 +138,7 @@ library(tmap)
 If you happen to get messages indicating any of the packages are not installed you can use `install.packages` to install them.
 
 
-## First look at spatial data objects 
+## Spatial data objects 
 
 We are going to take a look at the spatial data objects used to create the map shown at the start of the tutorial.
 
@@ -144,7 +148,7 @@ First we will look at capital cities which are stored in an object called `afric
 
 Using the plot method should display a number of maps of the point locations of African capitals. 
 
-```{r sf-points-plot, exercise=TRUE, exercise.lines = 5}
+```{r sf-points-plot, exercise=TRUE, exercise.lines = NULL}
 
 plot(africapitals)
 #plot(sf::st_geometry(africapitals))
@@ -162,7 +166,7 @@ In R there are various functions that can help us explore what an object contain
 
 Have a look at the outputs for `africapitals`, uncomment the later lines to see their outputs :
 
-```{r sf-points-str, exercise=TRUE, exercise.lines = 5}
+```{r sf-points-str, exercise=TRUE, exercise.lines = NULL}
 
 str(africapitals)
 #head(africapitals)
@@ -179,32 +183,46 @@ These show us that `africapitals` is of class `sf` and `data.frame` and contains
 
 If you look at the output from the `str()` command above you should see that the first value in the geometry column has the coordinates 7.17 9.18. Because the capitals data are points they just have a single coordinate pair representing the longitude and latitude of each capital.
 
-The highway and countries objects are also of class `sf` and contain geometry columns. You can uncomment the lines below and run to see what is contained in the first cell of the geometry column for the other vector objects.
+The highway and countries objects are also of class `sf` and contain geometry columns. You can uncomment the lines below and run to see what is contained in the first cell of the geometry column for the other vector objects. 
 
-```{r sf-points-lines-polygons, exercise=TRUE, exercise.lines = 5}
+```{r sf-points-lines-polygons, exercise=TRUE, exercise.lines = NULL}
 
-africapitals$geometry[1]
-#afrihighway$geometry[1]
-#africountries$geometry[1]
+#The `paste()` command converts the object to text to ensure it appears in the learnr window.
+
+paste(africapitals$geometry[1])
+#paste(afrihighway$geometry[1])
+#paste(africountries$geometry[1])
 
 ```
 
 You should have seen that the geometry columns for the other objects contain multiple coordinates representing lines and polygons.
 
-## mapping spatial data objects with tmap 
+## First maps with `tmap` 
 
-There are a number of packages for making maps extend what is available from sf.
+There are a number of packages for making maps that extend what is available from `sf`.
 
-Package tmap is a good place to start, it offers both static and interactive mapping.
+Package `tmap` is a good place to start, it offers both static and interactive mapping.
 
 We can start with static plots of the capitals (points).
+
+In `tmap` `tm_shape([object_name])` defines the data to be used then `+` to add code that defines how the data are displayed, e.g. `tm_symbols()` for points. Extra arguments can be specified to modify the data display.
+
+In the code below try commenting out `#tm_symbols()` and uncommenting `tm_symbols(col = "blue")`. You can also use `col=[column_name]` to set the colour of each point according to the data value stored in that column.
 
 ```{r tmap-points1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
 tm_shape(africapitals) +
   tm_symbols()              #default grey points
-  #tm_symbols(col = "blue") #set colour directly
-  #tm_symbols(col = "pop")  #set colour to a data column
+
+
+```
+
+```{r tmap-points1-hint}
+
+#tm_shape(africapitals) + tm_symbols(col = "blue") #set colour directly
+
+tm_shape(africapitals) + 
+  tm_symbols(col = "pop")  #set colour to a data column
 
 ```
 
@@ -214,8 +232,9 @@ Next trying the highway network (lines).
 
 
 tm_shape(afrihighway) +
-    tm_lines()  
-    #tm_lines(col = "red")
+    tm_lines()
+
+# tm_shape(afrihighway) + tm_lines(col = "red")
 
 ```
 
@@ -223,36 +242,150 @@ Thirdly mapping the countries (polygons).
 
 ```{r tmap-polygons1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
-#tmap_mode('view') #tmap uses static 'plot' mode by default, uncomment this to change to interactive 'view' mode
-
 tm_shape(africountries) +
-    tm_polygons()  
-    #tm_polygons("pop_est")
-    #try commenting out above line and uncommenting that below
-    #tm_polygons("income_grp")
+    tm_polygons()
+
+#tm_shape(africountries) + tm_polygons("pop_est")
+#tm_shape(africountries) + tm_polygons("income_grp")
+
+```
+
+Fourthly, mapping gridded (raster) data that can represent e.g. remotely sensed or modelled data.
+
+This uses `tm_raster` and specifies the `breaks` or cutoffs to the different colour bands. In this example if you use the default breaks by not specifying any arguments with `tm_raster()` (try it below) the map looks entirely one colour.  
+
+```{r tmap-raster1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+
+tm_shape(afripop2020) +
+    tm_raster(breaks=c(0,2,20,200,2000,25000))
+
+#tm_shape(afripop2020) + tm_raster()
+#tm_shape(afripop2020) + tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000))
 
 ```
 
 
+## Mapping multiple 'layers'
+
+In the previous section we showed how to make maps of individual data objects. Those sections of code can be combined to create multiple 'layer' maps as shown in the example below.
+
+`tmap` (and other map packages) use the `+` symbol to combine layers.
+
+Experiment with commenting out lines in the code below.
+
+```{r tmap-vector-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+
+tmap::tm_shape(afripop2020) +
+    tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
+tm_shape(africountries) +
+    tm_borders("white", lwd = .5) +
+    #tm_text("iso_a3", size = "AREA") +
+tm_shape(afrihighway) +
+    tm_lines(col = "red") + 
+tm_shape(africapitals) +
+    tm_symbols(col = "blue", alpha=0.4, scale = .6 ) +
+tm_legend(show = FALSE)
+
+```
 
 
+## Interactive maps
 
+The maps created so far have been static, there are also great options for creating interactive maps, for web pages or reports, where readers can zoom, pan and enable/disable layers.
+
+In `tmap` you can keep the identical code that we've looked at so far and just add a single line before : `tmap_mode('view')` to change to interactive 'view' mode. View mode will remain active for your R session and you can switch back to static `plot` mode using `tmap_mode('plot')`. 
+
+This is the identical code from the previous section but shown in view mode.
+
+```{r tmap-interactive, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+
+tmap_mode('view') 
+
+tmap::tm_shape(afripop2020) +
+    tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
+tm_shape(africountries) +
+    tm_borders("white", lwd = .5) +
+    #tm_text("iso_a3", size = "AREA") +
+tm_shape(afrihighway) +
+    tm_lines(col = "red") + 
+tm_shape(africapitals) +
+    tm_symbols(col = "blue", alpha=0.4, scale = .6 )+
+tm_legend(show = FALSE)
+
+```
+
+You may want to go back to the earlier plots and see how they are modified by adding `tmap_mode('view')` before the code.
+
+
+## Read spatial data from files
+
+So far we have been using data that already exist within R as an R object.
+
+The same things can be done on data coming from a file.
+
+Spatial data can be read into R using the `sf::st_read()` for vector data (points, lines and polygons) and the `raster` package for gridded data.
+
+We show examples below using files that are stored in the package. To use with your own data replace filename1 & 2. (Note that these specified file names can also be a URL for data provided on the web.)
+
+
+```{r read-files, exercise = TRUE, exercise.eval = FALSE, message = FALSE, warning = FALSE}
+
+library(sf)
+filename1 <- system.file("extdata/africountries.shp", package="afrilearndata")
+myobject1 <- sf::st_read(filename1)
+
+library(raster)
+filename2 <- system.file("extdata/afripop2020.tif", package="afrilearndata")
+myobject2 <- raster::raster(filename2)
+
+```
+
+## Summary
+
+Good persistence for getting this far !
+
+We hope you've enjoyed this brief intro to mapping with R.
+
+We've shown you :
+
+i. storing and handling spatial data with the package `sf` 
+i. making static & interactive maps with package `tmap`
+i. reading in data from files using `sf` and `raster`
+
+This is a start, there are plenty of other options (e.g. maps can also be made with the packages `mapview` & `ggplot2`). We will cover other options in later tutorials, have a look at the [afrilearnr-crash-course](https://andysouth.shinyapps.io/afrilearnr-crash-course/) for some potential next steps. We welcome feedback, different ways of [getting in touch are on our website](https://afrimapr.github.io/afrimapr.website/get-involved/).
+
+There is a short quiz if you'd like to test your learning. 
 
 ## Quiz
 
 ```{r quiz}
 quiz(
-  question("Which column contains spatial information in an `sf`object ?",
+
+  question("What is the term for point, line and polygon data ?",
+    answer("raster", message = "raster is gridded data, the other alternative is vector (point,line,polygon)"),
+    answer("sf", message = "`sf` is the R package for handling vector (point,line,polygon) data"),
+    answer("vector", correct = TRUE),
+    answer("squiggles", message = "they may sometimes look like this, but `vector` is the more accepted technical term")
+  ),  
+  question("In an `sf` object, which column contains spatial information ?",
     answer("spatial"),
-    answer("longitude"),
+    answer("longitude", message = "coordinates can be stored in columns called anything but `sf` uses the geometry column e.g. for plotting"),
     answer("geometry", correct = TRUE),
     answer("name")
   ),
+  question("How can I read a shapefile into R ?",
+    answer("read.csv()", message = "this is for reading data from a text file"),
+    answer("<-"),
+    answer("myobject <- sf::st_read()", correct = TRUE),
+    answer("tmap")
+  ),  
   question("Which R packages can be used to make maps ?",
     answer("tmap", correct = TRUE),
+    answer("raster", correct = TRUE),    
     answer("ggplot", correct = TRUE),
     answer("sf", correct = TRUE),
-    answer("mapview", correct = TRUE)
+    answer("mapview", correct = TRUE),
+    incorrect = "All of these packages can be used to make maps ! Sometimes which you choose can be down to preference."
   )
 )
 ```
