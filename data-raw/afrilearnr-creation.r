@@ -42,6 +42,8 @@ usethis::use_tutorial("afrilearnr-crash-course", "A crash course to spatial in R
 # add a test tutorial to try to address issue in join not recognising packages
 usethis::use_tutorial("test-sf", "test shinyapps not finding packages in join tutorial")
 
+# add a test tutorial to try to address issue in join not recognising packages
+usethis::use_tutorial("test-tmap-view", "test tmap failing in view mode when run by learner")
 
 # create data-raw to save this script that creates the package
 usethis::use_data_raw()
