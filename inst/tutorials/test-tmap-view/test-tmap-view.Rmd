@@ -40,6 +40,7 @@ tm <- tm_shape(World) +
 
 ptm <- print(tm)
 
-tm
+#suggestion Martijn
+tmap_leaflet(tm)
 
 ```
