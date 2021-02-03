@@ -69,16 +69,20 @@ africa_gap <- gapminder %>%
 
 ## Introduction
 
-There are usually difficulties in joining data to spatial admin boundaries due to spelling, capitalisation, accents etc. Afrimapr wants to improve that, particularly for users relatively new to these issues.
+### **Use-case:** 
 
+* You want to plot data on a map but your data only have names of regions or places and no coordinates. 
+
+* You also can get some spatial data that does have the coordinates of the regions or places.
+
+
+
+**Joining** is the technical term for the process of combining a table of data containing names with another containing names and spatial coordinates.
+
+There are often difficulties in joining data to due to differences in the spelling of names, capitalisation, accents etc. afrimapr wants to make joining easier, particularly for users relatively new to these issues.
 
 Here we start to develop a checklist identifying code steps that users can work through to aid the joining process.
 
-### **Use-case:** 
-
-* You want to plot data on a map but the data only have names of regions or places. 
-
-* You also can get some spatial data (e.g. `africountries.shp`) that does have the coordinates of the regions or places.
 
 
 ```{r tmap_data_sample, eval = TRUE, echo = FALSE, message = FALSE, warning=FALSE}
