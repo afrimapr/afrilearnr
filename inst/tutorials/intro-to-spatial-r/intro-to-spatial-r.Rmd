@@ -58,7 +58,9 @@ We will start by looking at these spatial data for Africa, shown in the map belo
 ```{r tmap-first-view, echo=FALSE}
 #echo=FALSE to not show code in first version 
 
-# tmap_mode("view") to set to tmap interactive viewing mode
+tmap_mode("plot") # to try to avoid learnr problems with 'view' mode
+
+# tmap_mode("view") #to set to tmap interactive viewing mode
 
 # getting error on deploying to shinyapps
 #Error in value[3L] :OGRCreateCoordinateTransformation() returned NULL: PROJ available?
@@ -135,6 +137,28 @@ library(tmap)
 
 ```
 
+```{r set-crs-and-tmap-mode, echo=FALSE}
+#echo=FALSE to not show code 
+
+#TO TRY TO AVOID TWO ERRORS LATER, repeated from above so after library() commands
+
+tmap_mode("plot") # to try to avoid learnr problems with 'view' mode
+
+# getting error on deploying to shinyapps
+#Error in value[3L] :OGRCreateCoordinateTransformation() returned NULL: PROJ available?
+#potential solution
+#https://stackoverflow.com/questions/61286108/error-in-cpl-transformx-crs-aoi-pipeline-reverse-ogrcreatecoordinatetrans
+#If you save an sf-dataframe with a newer version of GDAL, and then try on a system with an older version of GDAL, the projection info cannot be read properly.
+#The solution is to re-set the projection:
+#st_crs(data) <- 4326
+
+sf::st_crs(africapitals) <- 4326
+sf::st_crs(afrihighway) <- 4326
+sf::st_crs(africountries) <- 4326
+sf::st_crs(africontinent) <- 4326 #not used yet but just in case
+
+```
+
 If you happen to get messages indicating any of the packages are not installed you can use `install.packages` to install them.
 
 
@@ -207,62 +231,85 @@ We can start with static plots of the capitals (points).
 
 In `tmap` `tm_shape([object_name])` defines the data to be used then `+` to add code that defines how the data are displayed, e.g. `tm_symbols()` for points. Extra arguments can be specified to modify the data display.
 
-In the code below try commenting out `#tm_symbols()` and uncommenting `tm_symbols(col = "blue")`. You can also use `col=[column_name]` to set the colour of each point according to the data value stored in that column.
+See the hint button for how to set colour with `tm_symbols(col = "blue")` and `col=[column_name]` to set the colour of each point according to the data value stored in a column.
 
 ```{r tmap-points1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
 tm_shape(africapitals) +
   tm_symbols()              #default grey points
 
-
 ```
 
 ```{r tmap-points1-hint}
 
-#tm_shape(africapitals) + tm_symbols(col = "blue") #set colour directly
+tm_shape(africapitals) + tm_symbols(col = "blue") #set colour directly
 
 tm_shape(africapitals) + 
   tm_symbols(col = "pop")  #set colour to a data column
 
 ```
 
-Next trying the highway network (lines).
+The highway network (lines) can be plotted using the same `tm_shape([object_name])` to start, then adding `tm_lines()` to display the lines. The hints button below shows options for colouring lines.
 
 ```{r tmap-lines1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
-
 
 tm_shape(afrihighway) +
     tm_lines()
 
-# tm_shape(afrihighway) + tm_lines(col = "red")
+```
+
+```{r tmap-lines1-hint}
+
+tm_shape(afrihighway) + tm_lines(col = "red")
+
+tm_shape(afrihighway) + tm_lines(col = "Name") #use a column name from the object
+
+#Note in this case using 'Name' to colour the highways doesn't work very well because there are too many unique names 
 
 ```
 
-Thirdly mapping the countries (polygons).
+Countries (polygons) can similarly be mapped using `tm_shape` and `tm_polygons`. See the hint button for options for colouring countries.
 
 ```{r tmap-polygons1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
 tm_shape(africountries) +
     tm_polygons()
 
-#tm_shape(africountries) + tm_polygons("pop_est")
-#tm_shape(africountries) + tm_polygons("income_grp")
+```
+
+```{r tmap-polygons1-hint}
+
+tm_shape(africountries) + tm_polygons(col="pop_est")
+
+tm_shape(africountries) + tm_polygons(col="income_grp")
+
+tm_shape(africountries) + tm_polygons(col="income_grp", border.col = "white")
 
 ```
 
-Fourthly, mapping gridded (raster) data that can represent e.g. remotely sensed or modelled data.
+Gridded (raster) data can represent e.g. remotely sensed or modelled data.
 
-This uses `tm_raster` and specifies the `breaks` or cutoffs to the different colour bands. In this example if you use the default breaks by not specifying any arguments with `tm_raster()` (try it below) the map looks entirely one colour.  
+It can be displayed with `tm_shape([object_name])` & `tm_raster`. Here we specify the `breaks` or cutoffs to the different colour bands. 
+
+In this example if you use the default breaks by not specifying any arguments with `tm_raster()` (see the hint) the map looks entirely one colour. This is because there are few very high density cells and a majority of cells with very low values. The default, equal-interval, classification doesn't work well, most of the map falls in the lowest category. If you look very closely you can see a few very high value cells e.g. in Lagos & Cairo.     
 
 ```{r tmap-raster1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
 tm_shape(afripop2020) +
     tm_raster(breaks=c(0,2,20,200,2000,25000))
 
-#tm_shape(afripop2020) + tm_raster()
-#tm_shape(afripop2020) + tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000))
 
 ```
+
+```{r tmap-raster1-hint, exercise.lines = 7}
+
+tm_shape(afripop2020) + tm_raster()
+
+#changing the colour palette
+tm_shape(afripop2020) + tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000))
+
+```
+
 
 
 ## Mapping multiple 'layers'
