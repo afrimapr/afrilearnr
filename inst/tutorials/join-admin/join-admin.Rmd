@@ -1,5 +1,5 @@
 ---
-title: "Join spatial data with a data.frame"
+title: "Join to spatial data (how to create a map from a spreadsheet that only has region names)"
 output: learnr::tutorial
 runtime: shiny_prerendered
 description: >
