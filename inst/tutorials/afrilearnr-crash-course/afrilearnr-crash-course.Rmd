@@ -47,9 +47,9 @@ sf::st_crs(africontinent) <- 4326
 
 ## tmap : map vector and raster data
 
-```{r tmap-vector-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+`tmap` uses static 'plot' mode by default. To make these plots interactive, copy & paste `tmap_mode('view')` above the code below & press `Run Code`.
 
-#tmap_mode('view') #tmap uses static 'plot' mode by default, uncomment this to change to interactive 'view' mode
+```{r tmap-vector-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
 tmap::tm_shape(afripop2020) +
     tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
@@ -66,9 +66,10 @@ tm_legend(show = FALSE)
 
 ## tmap : colour polygons by data values
 
+`tmap` uses static 'plot' mode by default. To make these plots interactive, copy & paste `tmap_mode('view')` above the code below & press `Run Code`.
+
 ```{r tmap-colour-polygons, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
-#tmap_mode('view') #tmap uses static 'plot' mode by default, uncomment this to change to interactive 'view' mode
 
 tm_shape(africountries) +
     tm_polygons("pop_est")

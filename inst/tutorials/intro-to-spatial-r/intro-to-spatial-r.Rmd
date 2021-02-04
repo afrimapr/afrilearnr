@@ -157,6 +157,8 @@ sf::st_crs(afrihighway) <- 4326
 sf::st_crs(africountries) <- 4326
 sf::st_crs(africontinent) <- 4326 #not used yet but just in case
 
+raster::crs(afripop2020) <- CRS('+init=EPSG:4326')
+
 ```
 
 If you happen to get messages indicating any of the packages are not installed you can use `install.packages` to install them.
@@ -320,7 +322,7 @@ In the previous section we showed how to make maps of individual data objects. T
 
 Experiment with commenting out lines in the code below.
 
-```{r tmap-vector-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+```{r tmap-vector-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='set-crs-and-tmap-mode'}
 
 tmap::tm_shape(afripop2020) +
     tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
