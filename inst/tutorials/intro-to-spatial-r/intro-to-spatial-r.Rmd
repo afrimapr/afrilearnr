@@ -157,7 +157,9 @@ sf::st_crs(afrihighway) <- 4326
 sf::st_crs(africountries) <- 4326
 sf::st_crs(africontinent) <- 4326 #not used yet but just in case
 
-raster::crs(afripop2020) <- CRS('+init=EPSG:4326')
+#2021-02-04 this fails on shinyapps
+#Error in value[[3L]](cond) : invalid crs: +init=EPSG:4326
+#raster::crs(afripop2020) <- CRS('+init=EPSG:4326')
 
 ```
 
