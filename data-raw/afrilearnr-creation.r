@@ -45,6 +45,9 @@ usethis::use_tutorial("test-sf", "test shinyapps not finding packages in join tu
 # add a test tutorial to try to address issue in join not recognising packages
 usethis::use_tutorial("test-tmap-view", "test tmap failing in view mode when run by learner")
 
+# add tutorial on getting data in
+usethis::use_tutorial("get-my-data-in", "How to get your own spatial data into R")
+
 # create data-raw to save this script that creates the package
 usethis::use_data_raw()
 # I renamed default DATASET.R to this afrilearnr-creation.r
