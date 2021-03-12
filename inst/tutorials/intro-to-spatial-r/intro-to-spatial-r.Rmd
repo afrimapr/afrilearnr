@@ -12,26 +12,12 @@ library(learnr)
 # default options for all chunks
 knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE )
 
-# exercise options
-#tutorial_options(exercise.lines=5)
-
-# working with vector data
-library(sf) 
-
-# data wrangling
-#library(dplyr) 
-
-# interactive mapping
-#library(mapview) 
-
-# example data
-library(afrilearndata)
-
-# static and interactive mapping
-library(tmap)
-
-# for raster manipulation
-library(raster)
+library(sf)               # working with vector data
+library(afrilearndata)    # example data
+library(tmap)             # static and interactive mapping
+library(raster)           # raster manipulation
+#library(dplyr)           # data wrangling
+#library(mapview)         # interactive mapping
 
 ```
 

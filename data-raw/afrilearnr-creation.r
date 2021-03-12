@@ -48,6 +48,9 @@ usethis::use_tutorial("test-tmap-view", "test tmap failing in view mode when run
 # add tutorial on getting data in
 usethis::use_tutorial("get-my-data-in", "How to get your own spatial data into R")
 
+# add a template tutorial to help authors develop other tutorials in a consistent format
+usethis::use_tutorial("template-tutorial", "A template that authors can copy & modify to create new tutorials")
+
 # create data-raw to save this script that creates the package
 usethis::use_data_raw()
 # I renamed default DATASET.R to this afrilearnr-creation.r

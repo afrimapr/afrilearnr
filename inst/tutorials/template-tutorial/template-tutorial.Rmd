@@ -1,9 +1,9 @@
 ---
-title: "How to get your own spatial data into R"
+title: "Blank afrimapr tutorial template"
 output: learnr::tutorial
 runtime: shiny_prerendered
 description: >
-  An entry level outline to help you get your own data, of different types, into R as a first step to mapping it.
+  A blank template for afrimapr authors to create other tutorials in a consistent format
 ---
 
 ```{r setup, include=FALSE}
@@ -23,10 +23,12 @@ library(raster)           # raster manipulation
 
 ## Intro to this tutorial & afrilearnr
 
-[TODO add few sentences]
+[TODO: ADD A FEW SENTENCES INTRO TO THIS TUTORIAL]
 
 The [afrilearnr](https://github.com/afrimapr/afrilearnr) package contains tutorials to teach spatial in R with African data. It is part of the [afrimapr](https://afrimapr.github.io/afrimapr.website/) project.
 
 Through the magic of [learnr](https://rstudio.github.io/learnr/) you can modify the R code in the boxes below and press run to see results.
 
 If you are accessing this from shinyapps you can also install [afrilearnr from github](https://github.com/afrimapr/afrilearnr) and run these tutorials locally.
+
+
