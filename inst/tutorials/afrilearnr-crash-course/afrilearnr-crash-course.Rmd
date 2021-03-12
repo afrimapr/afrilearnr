@@ -25,7 +25,7 @@ If you are accessing this from shinyapps you can also install [afrilearnr from g
 
 
 First loading required packages, if you see any warnings below you may need to install those you don't have.
-```{r library_packages, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+```{r libraries, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
 library(sf)     # for vector data handling
 library(raster) # for raster data handling
@@ -49,7 +49,7 @@ sf::st_crs(africontinent) <- 4326
 
 `tmap` uses static 'plot' mode by default. To make these plots interactive, copy & paste `tmap_mode('view')` above the code below & press `Run Code`.
 
-```{r tmap-vector-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+```{r tmap-vector-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='libraries'}
 
 tmap::tm_shape(afripop2020) +
     tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
@@ -64,11 +64,11 @@ tm_legend(show = FALSE)
 
 ```
 
-## tmap : colour polygons by data values
+## tmap : colour polygons by data
 
 `tmap` uses static 'plot' mode by default. To make these plots interactive, copy & paste `tmap_mode('view')` above the code below & press `Run Code`.
 
-```{r tmap-colour-polygons, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+```{r tmap-colour-polygons, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='libraries'}
 
 
 tm_shape(africountries) +
@@ -78,13 +78,13 @@ tm_shape(africountries) +
 
 ```
 
-## ggplot : colour polygons by data values
+## ggplot : colour polygons by data
 
 `ggrepel` helps avoid label overlap if plot is big enough, reduce label `size` to fit in smaller plots.
 Comment out `geom_text_repel` lines to remove labels.
 Comment out `theme_void()` to add axes back in.
 
-```{r ggplot-colour-polygons, exercise = TRUE, exercise.eval = TRUE, warning = FALSE}
+```{r ggplot-colour-polygons, exercise = TRUE, exercise.eval = TRUE, warning = FALSE, exercise.setup='libraries'}
 
 library(ggplot2)
 library(ggrepel)
@@ -105,7 +105,7 @@ ggplot(africountries) +
 
 ## mapview : interactive point data
 
-```{r mapview-points, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+```{r mapview-points, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='libraries'}
 
 mapview(africapitals,
         zcol = 'pop',
@@ -118,7 +118,7 @@ mapview(africapitals,
 
 Using `list(1,2)` to pass two layers and respective arguments.
 
-```{r mapview-points-lines, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+```{r mapview-points-lines, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='libraries'}
 
 mapview(list(africapitals, afrihighway),
         zcol = list('pop','Name'),
@@ -133,7 +133,7 @@ mapview(list(africapitals, afrihighway),
 
 Rasters are displayed semi-transparent by default so base layers including place names are visible. Population density data are often highly skewed with rare high values meaning that most variation gets hidden when using default data breaks between colours. Specifying near logarithmic breaks using `at` below makes patterns clearer.
 
-```{r mapview-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+```{r mapview-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='libraries'}
 
 mapview(afripop2020,
         at = c(0,2,20,200,2000,25000))
@@ -147,7 +147,7 @@ Note that previously this failed on shinyapps : package 'rgdal' is not available
 We can select one row from `africountries` in `afrilearndata` to allow us to display a country, using the `bbox` argument in tmap, the `ext` argument allows us to extend the bbox a little.
 
 
-```{r mapview-one-country, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+```{r mapview-one-country, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='libraries'}
 
 tmap_mode('view') #tmap uses static 'plot' mode by default, uncomment this to change to interactive 'view' mode
 #tmap_mode('plot') #to change back to static 'plot' mode
