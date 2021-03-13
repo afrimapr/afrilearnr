@@ -23,10 +23,42 @@ library(raster)           # raster manipulation
 
 ## Intro to this tutorial & afrilearnr
 
-[TODO add few sentences]
+This entry level tutorial will demonstrate getting spatial data of different types into R. The aim is to support you getting your own data into R as a first step to making maps or other plots.
 
 The [afrilearnr](https://github.com/afrimapr/afrilearnr) package contains tutorials to teach spatial in R with African data. It is part of the [afrimapr](https://afrimapr.github.io/afrimapr.website/) project.
 
 Through the magic of [learnr](https://rstudio.github.io/learnr/) you can modify the R code in the boxes below and press run to see results.
 
 If you are accessing this from shinyapps you can also install [afrilearnr from github](https://github.com/afrimapr/afrilearnr) and run these tutorials locally.
+
+
+## csv or xls file with coordinates
+
+Show two stage process of reading in a csv and then converting to sf.
+Demo what happens if don't set the crs (i.e. mapview can't put it on world map)
+Talk about coords
+Talk about 4326
+
+[https://ourairports.com/continents/AF/airports.csv]
+
+```{r csv-airports, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+
+#read from a csv file stored in the afrilearndata package as example to work with
+dfairports <- readr::read_csv(system.file("extdata/afriairports.csv", package="afrilearndata"))
+
+# to convert to sf object
+afriairports <- sf::st_as_sf(dfairports, coords=c("longitude_deg", "latitude_deg"), crs=4326)
+
+# mapview for a quick interactive plot
+mapview(afriairports)
+
+# making mapview plot more informative
+mapview(afriairports, zcol='type', label='name', cex=2)
+
+```
+
+
+## shapefile (*.shp)
+
+
+## raster tiff 
