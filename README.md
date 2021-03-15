@@ -15,7 +15,7 @@ maps.
 
 ## IN DEVELOPMENT
 
-For a draft demos of tutorials see :
+Draft demos of tutorials :
 
 1.  [intro-to-spatial-r](https://andysouth.shinyapps.io/intro-to-spatial-r/)
 2.  [afrilearnr-crash-course](https://andysouth.shinyapps.io/afrilearnr-crash-course/)
