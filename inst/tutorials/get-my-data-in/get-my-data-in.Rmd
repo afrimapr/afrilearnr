@@ -64,7 +64,7 @@ Here we will demonstrate the 3 steps using some airport data from the excellent 
 
 ```{r csv-airports, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
-# 1. read from a csv file stored in the afrilearndata package as example to work with
+# 1. read into dataframe
 filename <- system.file("extdata/afriairports.csv", package="afrilearndata")
 mydf <- readr::read_csv(filename)
 
@@ -95,7 +95,7 @@ Question : What happens when the `crs=4326` argument is not included in the code
 
 ```{r csv-crs-missing, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
-# 1. read from a csv
+# 1. read into dataframe
 filename <- system.file("extdata/afriairports.csv", package="afrilearndata")
 mydf <- readr::read_csv(filename)
 
@@ -120,6 +120,29 @@ In these examples we use `mapview` to give us a quick view by passing it only th
 
 `mapview(afriairports, zcol='type', label='name', cex=2)`
 
+
+### R dataframe example to play with
+
+You can also replace the first file reading step by directly creating a dataframe within R.
+
+In the example below try changing the coordinates within the dataframe at step 1, and run to see the points change.
+
+```{r dataframe-sf, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+
+# 1. create dataframe
+mydf <- data.frame(x=c(-10,10,30),
+                   y=c(20,0,-20),
+                   attribute=c("a","b","c"))
+
+# 2. convert to sf object
+mysf <- sf::st_as_sf(mydf, 
+                     coords=c("x", "y"),
+                     crs=4326)
+
+# 3. quick interactive plot
+mapview(mysf)    
+
+```
 
 
 ## shapefile (.shp)
