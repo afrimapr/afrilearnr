@@ -14,11 +14,13 @@ knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE )
 
 library(sf)               # working with vector data
 library(afrilearndata)    # example data
-library(tmap)             # static and interactive mapping
+#library(tmap)             # static and interactive mapping
 library(raster)           # raster manipulation
 #library(dplyr)           # data wrangling
 library(mapview)          # interactive mapping
 library(readr)            # reading text files
+
+library(rgdal)            # to try to correct raster error on shinyapps
 
 ```
 
@@ -34,9 +36,19 @@ If you are accessing this from shinyapps you can also install [afrilearnr from g
 
 See the sections for different file types following. In each we will demonstrate getting the data into R and then plotting with the `mapview` package. `mapview` is a great option for plotting data quickly to check that it is how (and where!) you expect.
 
-TODO add package dependencies visibly.
+To repeat these steps locally you would need the following packages.
 
-## csv or xls file with coordinates
+```{r packages, echo=TRUE}
+
+library(readr)            # reading text files
+library(sf)               # working with vector data
+library(mapview)          # interactive mapping
+library(raster)           # raster manipulation
+library(afrilearndata)    # example data, not required if using only your own data
+
+```
+
+## .csv, .txt or .xls file with coordinates
 
 Text files containing point data are one of the commonest file types that we see in small-scale operational mapping of data. Usually these consists of one row per record (e.g. the location of a health facility or disease case or dwelling) with two columns containing the coordinates of the location (e.g. longitude & latitude or x & y), and other columns containing attributes of that location (e.g. facility or disease type). 
 
@@ -98,10 +110,11 @@ mapview(mysf)
 
 Answer : You should see that when the `crs` argument is missed out the sf object is still created but mapview is unable to position it in the world so although the points appear there is no map background.
 
-### xls files
+### .xls files
 
 For Microsoft Excel files you just need to change step 1 of the three step approach. You can read an excel file into a dataframe using the package [readxl](https://readxl.tidyverse.org/) with something like `readxl::read_excel(filename)`. Another option is to save the sheet that you want as a .csv file from MS Excel itself.
 
+### improving `mapview` maps
 
 In these examples we use `mapview` to give us a quick view by passing it only the spatial object. `mapview` is very flexible and by passing just a few arguments the map can be made much more informative. Try pasting this line into the code window above and running it. It uses the columns named `type` and `name` that are in the datafile to colour and label the points.
 
@@ -109,7 +122,7 @@ In these examples we use `mapview` to give us a quick view by passing it only th
 
 
 
-## shapefile (*.shp)
+## shapefile (.shp)
 
 Shapefiles continue to be a common format for spatial data despite the fact that they are rather old now and some things about them are not ideal. One thing that can confuse users is that a shapefile consists of a collection of files with the same name and different suffixes. If some of the files are not present then it may no longer be possible to get at the data.
 
@@ -134,11 +147,11 @@ mapview(africountries)
 Because shapefiles are spatial files they can be read directly into a spatial (`sf`) object in R with `sf::read_sf(filename)`. This combines steps 1 & 2 from the csv example. In addition you don't need to specify in R which columns contain the coordinates or what the Coordinate Reference System (crs) is. This is effectively because these two steps will have been done when the file was created.
 
 
-## *.kml, geopackage *.gpkg & geojson *.json
+## .kml, .gpkg & .json
 
-For other spatial vector formats (e.g. kml, gpkg & geojson) the same approach as for a shapefile usually works i.e. `sf::read_sf(filename)`.
+For other spatial vector formats (e.g. kml, geopackage & geojson) the same approach as for a shapefile usually works i.e. `sf::read_sf(filename)`.
 
-Here we show an example with a kml file of the simplified African highway network.
+Here we show an example with a .kml file of the simplified African highway network.
 
 ```{r kml-highways, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
