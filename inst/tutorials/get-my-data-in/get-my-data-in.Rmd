@@ -151,7 +151,7 @@ For Microsoft Excel files you just need to change step 1 of the three step appro
 
 ### improving `mapview` maps
 
-In these examples we use `mapview` to give us a quick view by passing it only the spatial object. `mapview` is very flexible and by passing just a few arguments the map can be made much more informative. Try pasting this line into the code window above and running it. It uses the columns named `type` and `name` that are in the datafile to colour and label the points.
+In these examples we use `mapview` to give us a quick view by passing it only the spatial object. `mapview` is very flexible and by passing just a few arguments the map can be made much more informative. Try pasting this line into the code window above and running it. It uses the columns named `type` and `name` from the datafile to colour and label the points.
 
 `mapview(afriairports, zcol='type', label='name', cex=2)`
 
@@ -246,4 +246,4 @@ mapview(myrast)
 
 ## Other sources of information
 
-[Geocomputation in R](https://geocompr.robinlovelace.net/read-write.html)
+More information on reading different spatial file formats into R can be found in [this section in the excellent Geocomputation in R](https://geocompr.robinlovelace.net/read-write.html#data-input)
