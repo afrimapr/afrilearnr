@@ -24,15 +24,28 @@ library(rgdal)            # to try to correct raster error on shinyapps
 
 ```
 
-## Intro to this tutorial & afrilearnr
+## Outline of this tutorial
 
-This entry level tutorial will demonstrate getting spatial data of different types into R. The aim is to support you getting your own data into R as a first step to making maps or other plots.
+This entry level tutorial will demonstrate getting spatial data of different types into R. The aim is to support you getting your own data into R before making maps or other plots.
 
-The [afrilearnr](https://github.com/afrimapr/afrilearnr) package contains tutorials to teach spatial in R with African data. It is part of the [afrimapr](https://afrimapr.github.io/afrimapr.website/) project.
+
+### Outline of afrilearnr
+
+This tutorial is part of the [afrilearnr](https://github.com/afrimapr/afrilearnr) package containing tutorials to teach spatial in R with African data. It is part of the [afrimapr](https://afrimapr.github.io/afrimapr.website/) project.
 
 Through the magic of [learnr](https://rstudio.github.io/learnr/) you can modify the R code in the boxes below and press run to see results.
 
 If you are accessing this from shinyapps you can also install [afrilearnr from github](https://github.com/afrimapr/afrilearnr) and run these tutorials locally.
+
+### How this tutorial relates to others in afrilearnr
+
+tutorial name        | outline                                   | best before/after this
+-------------------- | ----------------------------------------- | ------------------
+`intro-to-spatial-r` |   an introduction to spatial data in R | before
+`join-admin`         |    dealing with data referenced by names rather than coordinates | after
+`afrilearnr-crash-course` |   gallery of plots & code with minimal explanation | after
+
+### How to use this tutorial 
 
 See the sections for different file types following. In each we will demonstrate getting the data into R and then plotting with the `mapview` package. `mapview` is a great option for plotting data quickly to check that it is how (and where!) you expect.
 
@@ -62,7 +75,9 @@ To map these data in R usually requires a 3 step process.
 
 Here we will demonstrate the 3 steps using some airport data from the excellent [ourairports](https://ourairports.com/continents/AF/airports.csv) that we have extracted and saved in the [afrilearndata](https://github.com/afrimapr/afrilearndata) package. 
 
-```{r csv-airports, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+
+
+```{r csv-airports, exercise = TRUE, exercise.eval = TRUE}
 
 # 1. read into dataframe
 filename <- system.file("extdata/afriairports.csv", package="afrilearndata")
@@ -82,7 +97,7 @@ mapview(mysf)
 
 To apply the code chunk above to your own data :
 
-* replace `system.file("extdata/afriairports.csv", package="afrilearndata")` with the path to your file (this might just be something like `"myfile.csv"`) 
+* replace `system.file("extdata/afriairports.csv", package="afrilearndata")` with the path to your file (this might just be something like `"mydata/myfile.csv"`) 
 * replace `"longitude_deg", "latitude_deg"` with the names of the columns containing the coordinates in your data
 * you may need to change `crs=4326` as explained below
 
@@ -95,9 +110,7 @@ Question : What happens when the `crs=4326` argument is not included in the code
 
 ```{r csv-crs-missing, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
-# 1. read into dataframe
-filename <- system.file("extdata/afriairports.csv", package="afrilearndata")
-mydf <- readr::read_csv(filename)
+# using the dataframe mydf from previous code window
 
 # 2. convert to sf object - note crs missing
 mysf <- sf::st_as_sf(mydf, 
@@ -108,7 +121,29 @@ mapview(mysf)
 
 ```
 
-Answer : You should see that when the `crs` argument is missed out the sf object is still created but mapview is unable to position it in the world so although the points appear there is no map background.
+Answer : You should see that when there is no `crs` argument the sf object is still created but mapview is unable to position it in the world. The points still appear but there is no map background.
+
+### data structure
+
+We can look at the structure of the original dataframe and the sf object using `names()` to show the column names and `head()` which returns the first six rows. What is the difference between them ? 
+
+```{r dataframe-airports, echo=TRUE}
+
+# original dataframe
+names(mydf)
+# sf object
+names(mysf)  
+# original dataframe
+head(mydf)
+# sf object
+head(mysf)
+
+```
+
+
+
+You should see that the columns containing coordinates in the original dataframe are no longer there. In the new `sf` object there is a new column called `geometry` at the end that stores the spatial information. This demonstrates that an `sf` object behaves like a dataframe in many ways.  
+
 
 ### .xls files
 
@@ -143,6 +178,9 @@ mysf <- sf::st_as_sf(mydf,
 mapview(mysf)    
 
 ```
+
+Note that in this example the coordinates are stored in columns named x & y, which is passed to `sf::st_as_sf` as `coords=c("x", "y")`. To find out more about the arguments for any function you can type `?` and the function name e.g `?st_as_sf`
+
 
 
 ## shapefile (.shp)
@@ -205,3 +243,7 @@ myrast <- raster::raster(filename)
 mapview(myrast)
 
 ```
+
+## Other sources of information
+
+[Geocomputation in R](https://geocompr.robinlovelace.net/read-write.html)
