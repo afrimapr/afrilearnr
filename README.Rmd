@@ -26,8 +26,9 @@ A growing collection of interactive [learnr](https://rstudio.github.io/learnr/) 
 Draft demos of tutorials :     
 
 1. [intro-to-spatial-r](https://andysouth.shinyapps.io/intro-to-spatial-r/)
-1. [afrilearnr-crash-course](https://andysouth.shinyapps.io/afrilearnr-crash-course/)
+1. [get-my-data-in](https://andysouth.shinyapps.io/get-my-data-in/)
 1. [joining spreadsheet data to a map](https://andysouth.shinyapps.io/join-admin/)
+1. [afrilearnr-crash-course](https://andysouth.shinyapps.io/afrilearnr-crash-course/)
 
 The tutorials are saved as a package that can also be installed and run locally in RStudio.
 
