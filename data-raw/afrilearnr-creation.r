@@ -51,6 +51,10 @@ usethis::use_tutorial("get-my-data-in", "How to get your own spatial data into R
 # add a template tutorial to help authors develop other tutorials in a consistent format
 usethis::use_tutorial("template-tutorial", "A template that authors can copy & modify to create new tutorials")
 
+# add tutorial on openstreetmap-data
+usethis::use_tutorial("openstreetmap-data", "Download and plot OpenStreetMap data from R")
+
+
 # create data-raw to save this script that creates the package
 usethis::use_data_raw()
 # I renamed default DATASET.R to this afrilearnr-creation.r
