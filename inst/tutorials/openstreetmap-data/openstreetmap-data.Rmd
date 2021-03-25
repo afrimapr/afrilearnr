@@ -73,14 +73,14 @@ library(afrilearndata)    # example data, not required if using only your own da
 
 ```
 
-# Retrieving Open Street Map data using the `osmdata` package
+## `osmdata` package
 
 `osmdata` is an R package for downloading data from [OpenStreetMap (OSM)](https://www.openstreetmap.org/#map=2/-30.8/119.1).
 This tutorial takes you through the steps of retrieving points of interest in defined geographical areas using the `osmdata` package,
 and visualising them using the `ggmap` and `ggplot2` packages.
 
 
-## Installing the `osmdata` package
+### Installing `osmdata`
 
 We can install and load the `osmdata` package from CRAN as follows
 
@@ -92,7 +92,7 @@ install.packages("osmdata")
 library(osmdata)
 ```
 
-## Exploring the `osmdata` package
+### Exploring the `osmdata` package
 
 The `osmdata` package provides spatial data about a wide range of spatial properties and objects across the world.
 The `available_features()` function can be used to get the list of recognized features in OSM. A list of the available features can be found in the [OSM wiki](https://wiki.openstreetmap.org/wiki/Map_Features).
@@ -187,7 +187,7 @@ lagos_hospitals$osm_polygons
 ```
 
 
-## Visualising queried data with `ggplot2` and `ggmap`
+## Visualising queried data
 
 We can visualise the retrieved data about hospitals in Lagos using the `ggplot2` package. We can easily visualise simple feature objects using the `geom_sf()` function of `ggplot2`.
 
@@ -223,7 +223,7 @@ ggmap(lagos_map) +
 ```
 
 
-## Examples
+## A complete example
 
 The following is a complete example of using the `osmdata` package to retrieve data of hospitals in Lagos and `ggmap` to visualise them.
 
