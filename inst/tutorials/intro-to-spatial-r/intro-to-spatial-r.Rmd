@@ -323,7 +323,12 @@ In the previous section we showed how to make maps of individual data objects. T
 
 `tmap` (and other map packages) use the `+` symbol to combine layers.
 
-Experiment with commenting out lines in the code below.
+Experiment with commenting out & in lines in the code below by adding and removing # at the start of lines and pressing Run Code.
+
+Try to make maps :
+1. without the highway network
+1. without the raster population layer & with country boundaries that are visible
+1. with text labels for ISO country codes
 
 ```{r tmap-vector-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='set-crs-and-tmap-mode'}
 
