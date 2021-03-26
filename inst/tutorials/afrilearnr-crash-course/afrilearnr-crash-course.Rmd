@@ -23,6 +23,14 @@ Datasets are obtained from the [afrilearndata](https://github.com/afrimapr/afril
 
 If you are accessing this from shinyapps you can also install [afrilearnr from github](https://github.com/afrimapr/afrilearnr) and run these tutorials locally.
 
+### How this tutorial relates to others in afrilearnr
+
+tutorial name        | outline                                   | recommended order
+-------------------- | ----------------------------------------- | ------------------
+`intro-to-spatial-r` |   an introduction to spatial data in R | 1 
+`get-my-data-in`     |    getting your own spatial data into R | 2
+`join-admin`         |    dealing with data referenced by names rather than coordinates | 3
+`afrilearnr-crash-course` |   gallery of plots & code with minimal explanation | 4 this one
 
 First loading required packages, if you see any warnings below you may need to install those you don't have.
 ```{r libraries, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}

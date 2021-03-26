@@ -67,13 +67,31 @@ africa_gap <- gapminder %>%
                          year == 2007)
 ```
 
-## Introduction
+## Outline of this tutorial
 
 ### **Use-case:** 
 
 * You want to plot data on a map but your data only have names of regions or places and no coordinates. 
 
 * You also can get some spatial data that does have the coordinates of the regions or places.
+
+
+### Outline of afrilearnr
+
+This tutorial is part of the [afrilearnr](https://github.com/afrimapr/afrilearnr) package containing tutorials to teach spatial in R with African data. It is part of the [afrimapr](https://afrimapr.github.io/afrimapr.website/) project.
+
+Through the magic of [learnr](https://rstudio.github.io/learnr/) you can modify the R code in the boxes below and press run to see results.
+
+If you are accessing this from shinyapps you can also install [afrilearnr from github](https://github.com/afrimapr/afrilearnr) and run these tutorials locally.
+
+### How this tutorial relates to others in afrilearnr
+
+tutorial name        | outline                                   | recommended order
+-------------------- | ----------------------------------------- | ------------------
+`intro-to-spatial-r` |   an introduction to spatial data in R | 1 
+`get-my-data-in`     |    getting your own spatial data into R | 2
+`join-admin`         |    dealing with data referenced by names rather than coordinates | 3 this one
+`afrilearnr-crash-course` |   gallery of plots & code with minimal explanation | 4
 
 
 

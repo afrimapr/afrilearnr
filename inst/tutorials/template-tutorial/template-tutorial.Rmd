@@ -41,12 +41,12 @@ If you are accessing this from shinyapps you can also install [afrilearnr from g
 
 ### How this tutorial relates to others in afrilearnr
 
-tutorial name        | outline                                   | best before/after this
+tutorial name        | outline                                   | recommended order
 -------------------- | ----------------------------------------- | ------------------
-`intro-to-spatial-r` |   an introduction to spatial data in R | before
-`join-admin`         |    dealing with data referenced by names rather than coordinates | after
-`get-my-data-in`     |    getting your own spatial data into R | after
-`afrilearnr-crash-course` |   gallery of plots & code with minimal explanation | after
+`intro-to-spatial-r` |   an introduction to spatial data in R | 1 this one
+`get-my-data-in`     |    getting your own spatial data into R | 2
+`join-admin`         |    dealing with data referenced by names rather than coordinates | 3
+`afrilearnr-crash-course` |   gallery of plots & code with minimal explanation | 4
 
 ### How to use this tutorial 
 
