@@ -21,7 +21,7 @@ library(raster)           # raster manipulation
 
 ```
 
-## Outline of this tutorial
+## A. Outline of this tutorial
 
 This is an entry level introduction to spatial data in R using examples from Africa. It is aimed at those with a little knowledge of R.
 
@@ -47,7 +47,7 @@ tutorial name        | outline                                   | recommended o
 
 Click 'Next Topic' to move between sections, or selection section headings on the left. If you want to return the tutorial to its original state you can press 'Start Over' on the lower left.
 
-## Spatial data outline
+## B. Spatial data outline
 
 We will start by looking at these spatial data for Africa, shown in the map below. 
 
@@ -103,7 +103,7 @@ In R the `sf` package deals with vector data (points, lines and polygons), and t
 There are other packages too but we don't need those for now.
 
 
-## Loading packages and data
+## C. Loading packages and data
 
 Packages in R contain extra methods and data to add to base R.
 
@@ -167,7 +167,7 @@ sf::st_crs(africontinent) <- 4326 #not used yet but just in case
 If you happen to get messages indicating any of the packages are not installed you can use `install.packages` to install them.
 
 
-## Spatial data objects 
+## D. Spatial data objects 
 
 We are going to take a look at the spatial data objects used to create the map shown at the start of the tutorial.
 
@@ -226,7 +226,7 @@ paste(africapitals$geometry[1])
 
 You should have seen that the geometry columns for the other objects contain multiple coordinates representing lines and polygons.
 
-## First maps with `tmap` 
+## E. First maps with `tmap` 
 
 There are a number of packages for making maps that extend what is available from `sf`.
 
@@ -317,7 +317,7 @@ tm_shape(afripop2020) + tm_raster(palette = rev(viridisLite::magma(5)), breaks=c
 
 
 
-## Mapping multiple 'layers'
+## F. Mapping multiple 'layers'
 
 In the previous section we showed how to make maps of individual data objects. Those sections of code can be combined to create multiple 'layer' maps as shown in the example below.
 
@@ -341,7 +341,7 @@ tm_legend(show = FALSE)
 ```
 
 
-## Interactive maps
+## G. Interactive maps
 
 The maps created so far have been static, there are also great options for creating interactive maps, for web pages or reports, where readers can zoom, pan and enable/disable layers.
 
@@ -369,7 +369,7 @@ tm_legend(show = FALSE)
 You may want to go back to the earlier plots and see how they are modified by adding `tmap_mode('view')` before the code.
 
 
-## Read spatial data from files
+## H. Read spatial data from files
 
 So far we have been using data that already exist within R as an R object.
 
@@ -443,19 +443,4 @@ quiz(
 ```
 
 
-```{r old-to-reuse}
-
-#Use names() to see what columns there are. Then try changing the plot to show data from a different column.
-
-### Other sources of geographic data in R
-#1. existing packages
-#1. local files (that we may have downloaded)
-#1. internet
-#1. created by hand in R
-
-#[NOTE can have setup and exercise chunks]
-#[https://github.com/rstudio/learnr/issues/72]
-#[NOTE can use exercise.setup='setupA' to make chunks dependent on previous setup or exercise chunks ]
-
-```
 
