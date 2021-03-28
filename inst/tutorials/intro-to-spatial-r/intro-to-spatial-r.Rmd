@@ -1,6 +1,10 @@
 ---
 title: "afrimapr intro to spatial data in R"
-output: learnr::tutorial
+#output: learnr::tutorial
+#to make tutorial printable : https://github.com/rstudio/learnr/issues/465
+output: 
+  learnr::tutorial:
+    css: print.css
 runtime: shiny_prerendered
 description: >
   An entry level introduction to spatial data in R using examples from Africa.
