@@ -358,7 +358,7 @@ In `tmap` you can keep the identical code that we've looked at so far and just a
 
 This is the identical code from the previous section but shown in view mode.
 
-```{r tmap-interactive, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+```{r tmap-interactive, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='set-crs-and-tmap-mode'}
 
 tmap_mode('view') 
 
