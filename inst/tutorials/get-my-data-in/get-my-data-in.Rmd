@@ -90,6 +90,8 @@ Here we will demonstrate the 3 steps using some airport data from the excellent 
 filename <- system.file("extdata/afriairports.csv", package="afrilearndata")
 mydf <- readr::read_csv(filename)
 
+mydf <- mydf[(1:100), ] #select first 100 rows just to make quicker online
+
 # 2. convert to sf object & set crs
 mysf <- sf::st_as_sf(mydf, 
                      coords=c("longitude_deg", "latitude_deg"),
@@ -118,9 +120,13 @@ In this case it tells `sf` what system to expect. In the majority of cases coord
 
 ```{r csv-crs-missing, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
-# using the dataframe mydf from previous code window
+# 1. read into dataframe
+filename <- system.file("extdata/afriairports.csv", package="afrilearndata")
+mydf <- readr::read_csv(filename)
 
-# 2. convert to sf object - note crs missing
+mydf <- mydf[(1:100), ] #select first 100 rows just to make quicker online
+
+# 2. convert to sf object - NOTE crs missing
 mysf <- sf::st_as_sf(mydf, 
                      coords=c("longitude_deg", "latitude_deg"))
 
@@ -247,6 +253,12 @@ myrast <- raster::raster(filename)
 mapview(myrast)
 
 ```
+  
+Note that the map above appears mostly dark. This is the same issue we came across in the intro-to-spatial-r tutorial. This is because there are few very high density cells and a majority of cells with very low values. This is a common issue with population data. The default, equal-interval, classification doesn't work well, most of the map falls in the lowest category. If you look very closely you can see a few very high value cells e.g. in Lagos & Cairo. 
+
+In intro-to-spatial-r we fixed this in `tmap` using the `breaks=` argument to set the breakpoints between colours. In `mapview` we can achieve the same using `at=`.
+
+**To try** replace the final line above with this : `mapview(myrast, at=c(0,1,10,100,1000,10000,100000))`. Experiment with different breakpoints. 
 
 
 ## G. `mapview` options
@@ -259,6 +271,8 @@ In these examples we have used `mapview` to give us a quick view by passing it o
 # 1. read into dataframe
 filename <- system.file("extdata/afriairports.csv", package="afrilearndata")
 mydf <- readr::read_csv(filename)
+
+mydf <- mydf[(1:100), ] #select first 100 rows just to make quicker online
 
 # 2. convert to sf object
 mysf <- sf::st_as_sf(mydf, 
@@ -276,15 +290,16 @@ These `mapview` arguments are the most useful :
 
 argument  | value | what does it do ?
 ----------- | --------- | -------------------------------------
-type   | a column name | determines how features are coloured and the legend
+zcol   | a column name | determines how features are coloured and the legend
 label   | a column name or some text  | gives a label that appears when mouse is hovered over
 cex     | number e.g. 2 or a column name | sets point size to a constant number or the value held in a column 
 col.regions | `'blue'` | a colour palette or individual colour for circle interiors
-col | `'red'` | a colour palette or individual colour for circle borders
+color | `'red'` | a colour palette or individual colour for circle borders
 alpha.regions   | a number between 0 & 1 | opacity of the circle interior, 0=invisible 
 alpha   | a number between 0 & 1 | opacity of the circle outline, 0=invisible which removes circle border and can be effective
 legend | `TRUE` or `FALSE` | whether to plot a legend, TRUE by default
 map.types | `c('CartoDB.Positron', 'OpenStreetMap.HOT')` | background map layer options
+at | a series of numeric values e.g. `c(0,1,10)` | breakpoints between colours
 
 Try modifying the airports maps above using some of these options.
 

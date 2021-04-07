@@ -300,7 +300,7 @@ Gridded (raster) data can represent e.g. remotely sensed or modelled data.
 
 It can be displayed with `tm_shape([object_name])` & `tm_raster`. Here we specify the `breaks` or cutoffs to the different colour bands. 
 
-In this example if you use the default breaks by not specifying any arguments with `tm_raster()` (see the hint) the map looks entirely one colour. This is because there are few very high density cells and a majority of cells with very low values. The default, equal-interval, classification doesn't work well, most of the map falls in the lowest category. If you look very closely you can see a few very high value cells e.g. in Lagos & Cairo.     
+In this example if you use the default breaks by not specifying any arguments with `tm_raster()` (see the hint) the map looks entirely one colour. This is because there are few very high density cells and a majority of cells with very low values. This is a common issue with population data. The default, equal-interval, classification doesn't work well, most of the map falls in the lowest category. If you look very closely you can see a few very high value cells e.g. in Lagos & Cairo.     
 
 ```{r tmap-raster1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
