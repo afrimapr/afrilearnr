@@ -270,17 +270,16 @@ head(gapminder)
 ```
 
 
-We can prepare the data by filtering out just the data for the continent "Africa" using `filter(continent == "Africa")`. Fill in the blank to filter the data just for the year 2007.
+We can prepare the data by filtering out just the data for the continent "Africa" using `filter(continent == "Africa")`. Can you add to the filter to get data just for the year 2007 ?
 
 ```{r filter_gampinder, exercise = TRUE}
 
 africa_gap <- gapminder %>%
-                  filter(continent == "Africa",
-                         year == _____)
+                  filter(continent == "Africa")
 
 ```
 
-Hint `r fa(name = "lightbulb-on")`: 2007 is a number and doesn't need quotes "".
+Hint `r fa(name = "lightbulb-on")`: you need a comma(,) to add an extra filter, 2007 is a number and doesn't need quotes "".
 
 
 
