@@ -421,31 +421,35 @@ There is a short quiz if you'd like to test your learning.
 
 ```{r quiz}
 quiz(
-
+  
   question("What is the term for point, line and polygon data ?",
     answer("raster", message = "raster is gridded data, the other alternative is vector (point,line,polygon)"),
     answer("sf", message = "`sf` is the R package for handling vector (point,line,polygon) data"),
     answer("vector", correct = TRUE),
-    answer("squiggles", message = "they may sometimes look like this, but `vector` is the more accepted technical term")
+    answer("squiggles", message = "they may sometimes look like this, but `vector` is the more accepted technical term"),  
+    allow_retry = TRUE
   ),  
   question("In an `sf` object, which column contains spatial information ?",
     answer("spatial"),
     answer("longitude", message = "coordinates can be stored in columns called anything but `sf` uses the geometry column e.g. for plotting"),
     answer("geometry", correct = TRUE),
-    answer("name")
+    answer("name"),  
+    allow_retry = TRUE
   ),
   question("How can I read a shapefile into R ?",
     answer("read.csv()", message = "this is for reading data from a text file"),
     answer("<-"),
     answer("myobject <- sf::st_read()", correct = TRUE),
-    answer("tmap")
+    answer("tmap"),  
+    allow_retry = TRUE
   ),  
   question("Which R packages can be used to make maps ?",
     answer("tmap", correct = TRUE),
     answer("raster", correct = TRUE),    
     answer("ggplot", correct = TRUE),
     answer("sf", correct = TRUE),
-    answer("mapview", correct = TRUE),
+    answer("mapview", correct = TRUE),  
+    allow_retry = TRUE,
     incorrect = "All of these packages can be used to make maps ! Sometimes which you choose can be down to preference."
   )
 )

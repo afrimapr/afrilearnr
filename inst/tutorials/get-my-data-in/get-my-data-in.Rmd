@@ -333,20 +333,31 @@ quiz(
     answer("1.read into dataframe 2.convert to sf object & set crs 3.quick interactive plot", correct = TRUE),
     answer("1.convert to sf object & set crs 1.read into dataframe 3.quick interactive plot"),
     answer("1.read into dataframe 2.quick interactive plot 3.convert to sf object & set crs"),
-    answer("1.quick interactive plot 2.read into dataframe 3.convert to sf object & set crs")
+    answer("1.quick interactive plot 2.read into dataframe 3.convert to sf object & set crs"),
+    allow_retry = TRUE
   ),   
   question("What is the function to convert a dataframe to spatial sf format ?",
     answer("sf::", message = "this is an optional indication that a function is from the `sf` package, it can help to make code more readable, it will not do anything on its own"),
     answer("st_as_sf()", correct = TRUE),
     answer("st_read()", message = "`st_read` is used to read in files that are already in a spatial format e.g. `.shp`"),
     answer("read_csv()", message = "this reads in a text file but does not convert it to spatial, sf, format")
-  ),  
+  ),
+  question("What is the most common crs (coordinate reference system) for longitude, latitude data  ?",
+    answer("c('longitude', 'latitude')", message = "this specifies the columns containing coordinates, not the crs"),
+    answer("4326", correct = TRUE),
+    answer("'4326'", message = "this is the correct number, but when placed in quotes R will intrepret it as text and it won't work as expected"),   
+    # adding the answer below didn't do what I wanted - it only gave correct if both options were selected - I find it a bit starge that wgs84 works anyway, so best to leave out
+    # answer("wgs84", correct = TRUE, message="this works too, but we recommend you use 4326"), 
+    answer("EPSG", message = "EPSG is the name of the coding ssytem, not the code itself"),
+    allow_retry = TRUE
+  ),    
   question("In a coordinates file what names can be used for the columns containing coordinates ?",
     answer("longitude,latitude", correct = TRUE),
     answer("x,y", correct = TRUE),    
     answer("long,lat", correct = TRUE),
     answer("horizontal,vertical", correct = TRUE),
     answer("salt,pepper", correct = TRUE),
+    allow_retry = TRUE,
     incorrect = "Any names can be used for columns as long as they are specified in st_as_sf(coords=c('x','y'). However, it is a good idea to stick to conventional names such as longitude,latitude to avoid confusion"
   )
 )
