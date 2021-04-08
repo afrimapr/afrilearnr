@@ -392,11 +392,11 @@ We show examples below using files that are stored in the package. To use with y
 ```{r read-files, exercise = TRUE, exercise.eval = FALSE, message = FALSE, warning = FALSE}
 
 library(sf)
-filename1 <- system.file("extdata/africountries.shp", package="afrilearndata")
+filename1 <- system.file("extdata","africountries.shp", package="afrilearndata", mustWork=TRUE)
 myobject1 <- sf::st_read(filename1)
 
 library(raster)
-filename2 <- system.file("extdata/afripop2020.tif", package="afrilearndata")
+filename2 <- system.file("extdata","afripop2020.tif", package="afrilearndata", mustWork=TRUE)
 myobject2 <- raster::raster(filename2)
 
 ```

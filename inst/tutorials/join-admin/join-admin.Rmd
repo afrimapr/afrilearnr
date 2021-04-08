@@ -160,7 +160,8 @@ africa_gap_ex %>%
 
 ```{r geographic_data_sample, eval = TRUE, echo = FALSE, message = FALSE}
 
-africountries <- sf::read_sf(system.file("extdata/africountries.shp", package="afrilearndata"))
+filename <- system.file("extdata","africountries.shp", package="afrilearndata", mustWork=TRUE)
+africountries <- sf::read_sf(filename)
 
 africountries %>%
       arrange(name_long) %>%
@@ -390,7 +391,8 @@ Read in the Africa country data `africountries.shp` from the `afrilearndata` pac
 
 ```{r read_spatial_data, exercise = TRUE, exercise.eval = TRUE, exercise.setup = "import_packages"}
 
-africountries <- sf::read_sf(system.file("extdata/africountries.shp", package="afrilearndata"))
+filename <- system.file("extdata","africountries.shp", package="afrilearndata", mustWork=TRUE)
+africountries <- sf::read_sf(filename)
 
 ```
 
