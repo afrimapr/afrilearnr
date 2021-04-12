@@ -25,6 +25,17 @@ library(raster)           # raster manipulation
 
 ```
 
+```{js print2pdf1, context="server"}
+// the following 2 chunks print the completed sections of the tutorial to PDF
+// uses "css/print2pdf.css"
+// from https://github.com/rstudio/learnr/issues/465#issuecomment-817861943
+$(document).on('shiny:inputchanged', function(event) {
+  if (event.name === 'print2pdf') {
+    window.print();
+  }
+});
+```
+
 ## A. Outline of this tutorial
 
 This is an entry level introduction to spatial data in R using examples from Africa. It is aimed at those with a little knowledge of R.
@@ -34,9 +45,6 @@ This is an entry level introduction to spatial data in R using examples from Afr
 
 This tutorial is part of the [afrilearnr](https://github.com/afrimapr/afrilearnr) package containing tutorials to teach spatial in R with African data. It is part of the [afrimapr](https://afrimapr.github.io/afrimapr.website/) project.
 
-Through the magic of [learnr](https://rstudio.github.io/learnr/) you can modify the R code in the boxes below and press run to see results.
-
-If you are accessing this from shinyapps you can also install [afrilearnr from github](https://github.com/afrimapr/afrilearnr) and run these tutorials locally.
 
 ### How this tutorial relates to others in afrilearnr
 
@@ -50,6 +58,18 @@ tutorial name        | outline                                   | recommended o
 ### How to use this tutorial 
 
 Click 'Next Topic' to move between sections, or selection section headings on the left. If you want to return the tutorial to its original state you can press 'Start Over' on the lower left.
+
+Through the magic of [learnr](https://rstudio.github.io/learnr/) you can modify the R code in the boxes below and press run to see results.
+
+If you are accessing this from shinyapps, another option is to install [afrilearnr from github](https://github.com/afrimapr/afrilearnr) and run these tutorials locally.
+
+A third option is to create a pdf of the tutorial that you can save and run through by copying the code into an R console.
+```{r print2pdf2}
+# button can be placed anywhere in the tutorial
+# from https://github.com/rstudio/learnr/issues/465#issuecomment-817861943
+actionButton("print2pdf", "save tutorial to pdf", style="opacity: .7; color: #000;")
+```
+
 
 ## B. Spatial data outline
 
