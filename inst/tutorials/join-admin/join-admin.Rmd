@@ -264,7 +264,7 @@ The `gapminder` data is automatically read in when the `gapminder` package is lo
 
 We can start by inspecting the data using `head()`, this will return the first six rows of the `data.frame`. 
 
-```{r read_gapminder, exercise = TRUE, exercise.eval = TRUE}
+```{r read_gapminder, exercise = TRUE, exercise.eval = TRUE, exercise.setup = "library_packages"}
 
 head(gapminder)
 
@@ -389,7 +389,7 @@ t %>%
 
 Read in the Africa country data `africountries.shp` from the `afrilearndata` package. This data is subset from the `rnaturalearth` package.
 
-```{r read_spatial_data, exercise = TRUE, exercise.eval = TRUE, exercise.setup = "import_packages"}
+```{r read_spatial_data, exercise = TRUE, exercise.eval = TRUE, exercise.setup = "library_packages"}
 
 filename <- system.file("extdata","africountries.shp", package="afrilearndata", mustWork=TRUE)
 africountries <- sf::read_sf(filename)
