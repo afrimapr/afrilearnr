@@ -10,13 +10,13 @@ description: >
 
 # To install a package
 #usethis::use_package("<external-package>")
-devtools::install_github("rstudio/packrat") #fixing to include broken chunks
 #allow_skip: true
 
 # library to run the tutorial
 library(learnr)
-library(packrat)
-#knitr::opts_chunk$set()
+library(packrat) #adding packrat to fix broken cells
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE )
+
 
 ```
 
@@ -228,9 +228,9 @@ div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
 
 ### Installing and Loading the Relevant Libraries
 
-The packages we'll use for this adventure are:
+To repeat this tutorial locally you will need the following packages
 
-```{r import_packages, exercise = TRUE, exercise.eval = FALSE, message = FALSE, warning = FALSE}
+```{r import_packages, echo = TRUE}
 
 # working with geographic data
 library(sf) 
@@ -274,7 +274,7 @@ head(gapminder)
 
 We can prepare the data by filtering out just the data for the continent "Africa" using `filter(continent == "Africa")`. Can you add to the filter to get data just for the year 2007 ?
 
-```{r filter_gampinder, exercise = TRUE}
+```{r filter_gapminder, exercise = TRUE}
 
 africa_gap <- gapminder %>%
                   filter(continent == "Africa")

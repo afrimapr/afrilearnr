@@ -31,10 +31,9 @@ Imports:
     tmap,
     rgdal,
     kableExtra,
-    viridisLite
-Remotes:
+    viridisLite,
+    packrat (>= 0.6.0.1)
+Remotes: 
     rstudio/fontawesome,
-    afrimapr/afrilearndata  
-    
-    
-    
+    afrimapr/afrilearndata,
+    rstudio/packrat
