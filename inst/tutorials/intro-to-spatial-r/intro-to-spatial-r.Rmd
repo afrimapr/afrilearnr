@@ -1,10 +1,10 @@
 ---
 title: "afrimapr intro to spatial data in R"
-#output: learnr::tutorial
+output: learnr::tutorial
 #to make tutorial printable : https://github.com/rstudio/learnr/issues/465
-output: 
-  learnr::tutorial:
-    css: print.css
+# output: 
+#   learnr::tutorial:
+#     css: print.css
 runtime: shiny_prerendered
 description: >
   An entry level introduction to spatial data in R using examples from Africa.
@@ -27,10 +27,10 @@ library(raster)           # raster manipulation
 
 ```{js print2pdf1, context="server"}
 // the following 2 chunks print the completed sections of the tutorial to PDF
-// uses "css/print2pdf.css"
+// uses chunk at end
 // from https://github.com/rstudio/learnr/issues/465#issuecomment-817861943
 $(document).on('shiny:inputchanged', function(event) {
-  if (event.name === 'print2pdf') {
+  if (event.name === 'print') {
     window.print();
   }
 });
@@ -67,7 +67,7 @@ A third option is to create a pdf of the tutorial that you can save and run thro
 ```{r print2pdf2}
 # button can be placed anywhere in the tutorial
 # from https://github.com/rstudio/learnr/issues/465#issuecomment-817861943
-actionButton("print2pdf", "save tutorial to pdf", style="opacity: .7; color: #000;")
+actionButton("print", "save tutorial to pdf", style="opacity: .7; color: #000;")
 ```
 
 
@@ -477,5 +477,37 @@ quiz(
 )
 ```
 
+```{css echo=FALSE}
+# to enable saving complete tutorial as pdf
+# from https://github.com/rstudio/learnr/issues/465
+# saving this in a separate file print.css didn't work locally or on shinyapps because browser couldn't find file 
+@media print {
+  .topicsContainer,
+  .topicActions,
+  .exerciseActions .skip {
+    display: none;
+  }
+  .topics .tutorialTitle,
+  .topics .section.level2,
+  .topics .section.level3:not(.hide) {
+    display: block;
+  }
+  .topics {
+    width: 100%;
+  }
+  .tutorial-exercise, .tutorial-question {
+    page-break-inside: avoid;
+  }
+  .section.level3.done h3 {
+    padding-left: 0;
+    background-image: none;
+  }
+  .topics .showSkip .exerciseActions::before {
+    content: "Topic not yet completed...";
+    font-style: italic;
+  }
+}  
+  
+```
 
 
