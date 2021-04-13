@@ -10,11 +10,12 @@ description: >
 
 # To install a package
 #usethis::use_package("<external-package>")
-
+devtools::install_github("rstudio/packrat") #fixing to include broken chunks
 #allow_skip: true
 
 # library to run the tutorial
 library(learnr)
+library(packrat)
 #knitr::opts_chunk$set()
 
 ```
@@ -438,7 +439,7 @@ tail(africountries)
 
 #### Doublecheck that the class is `sf` using the function `class`. 
 
-```{r check_class, exercise = TRUE, exercise.eval = TRUE, exercise.setup = "import_packages"}
+```{r check_class, exercise = TRUE, exercise.eval = TRUE, exercise.setup = "library_packages"}
 
 class(africountries)
 
@@ -446,7 +447,7 @@ class(africountries)
 
 Check the names of the columns using `names()`
 
-```{r check_names, exercise = TRUE, exercise.eval = TRUE, exercise.setup = "import_packages"}
+```{r check_names, exercise = TRUE, exercise.eval = TRUE, exercise.setup = "library_packages"}
 
 names(africountries)
 
