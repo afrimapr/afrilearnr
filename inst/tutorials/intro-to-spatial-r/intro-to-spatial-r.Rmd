@@ -43,7 +43,7 @@ This is an entry level introduction to spatial data in R using examples from Afr
 
 ### Outline of afrilearnr
 
-This tutorial is part of the [afrilearnr](https://github.com/afrimapr/afrilearnr) package containing tutorials to teach spatial in R with African data. It is part of the [afrimapr](https://afrimapr.github.io/afrimapr.website/) project.
+This tutorial is part of the [afrilearnr](https://github.com/afrimapr/afrilearnr) package containing tutorials to teach spatial data skills in R with African data. It is part of the [afrimapr](https://afrimapr.github.io/afrimapr.website/) project.
 
 
 ### How this tutorial relates to others in afrilearnr
@@ -57,7 +57,7 @@ tutorial name        | outline                                   | recommended o
 
 ### How to use this tutorial 
 
-Click 'Next Topic' to move between sections, or selection section headings on the left. If you want to return the tutorial to its original state you can press 'Start Over' on the lower left.
+Click 'Next Topic' to move between sections, or select section headings on the left. If you want to return the tutorial to its original state you can press 'Start Over' on the upper left.
 
 Through the magic of [learnr](https://rstudio.github.io/learnr/) you can modify the R code in the boxes below and press run to see results.
 
@@ -131,20 +131,21 @@ There are other packages too but we don't need those for now.
 
 Packages in R contain extra methods and data to add to base R.
 
-We will be loading one package (`afrilearndata`) containing example data for us to look at.
+We will be loading a package (`afrilearndata`) containing example data for us to look at.
 
-And the packages `sf` and `raster` allowing us to deal with vector and raster data.
+We will also use the packages `sf` and `raster`, which allow us to deal with vector and raster data.
 
-To use an R package requires a 2 step process :
+Using an R package requires a 2 step process :
 
-1. `install.packages`               needed infrequently from the internet
+1. `install.packages`               needed only once to install a package
+from the internet
 1. `library([package_name])`        needed each time you start a new R session
 
-A package may have been installed already on your system because it is a 'dependency' needed for another package.
+A package may have been installed on your system already because it is a 'dependency' needed for another package.
 
 In this case the packages `afrilearndata`, `sf` and `raster` should already have been installed when you installed this package.
 
-To check that the packages have been installed try running the `library` commands below. If they have been installed nothing should happen. Not very interesting but a good check and a good reminder that this is what you will need to do each time you start a new R session.
+To check that the packages have been installed, try running the `library` commands below. If they have been installed, nothing should happen. Not very interesting but a good check and a good reminder that this is what you will need to do each time you start a new R session.
 
 ```{r library_packages, exercise = TRUE, exercise.eval = FALSE, message = FALSE, warning = FALSE}
 
@@ -188,7 +189,7 @@ sf::st_crs(africontinent) <- 4326 #not used yet but just in case
 
 ```
 
-If you happen to get messages indicating any of the packages are not installed you can use `install.packages` to install them.
+If you happen to get messages indicating any of the packages are not installed, you can use `install.packages` to install them.
 
 
 ## D. Spatial data objects 
@@ -208,16 +209,16 @@ plot(africapitals)
 
 ```
 
-This uses the plot function defined in the `sf` package. It creates a series of maps in each one the points are coloured according to the values stored in one column. There is a function in sf called `st_geometry()` that allows you to get just the spatial parts without the attributes and you can see the result of that by removing the # in front of the 2nd line of code in the window above and pressing 'Run code'.  But we are getting ahead of ourselves, let us have a look at the structure of the object itself.
+This uses the plot function defined in the `sf` package. It creates a series of maps and in each one the points are coloured according to the values stored in one column. There is a function in `sf` called `st_geometry()` that allows you to get just the spatial parts without the attributes and you can see the result of that by removing the # in front of the 2nd line of code in the window above and pressing 'Run code'.  But we are getting ahead of ourselves; let us have a look at the structure of the object itself.
 
-In R there are various functions that can help us explore what an object contains. We find these particularly useful, there is some overlap between them.
+In R there are various functions that can help us explore what an object contains. We find these particularly useful; there is some overlap between them.
 
 1. str()        structure of the object, displays both names and values
-1. head()       displays the first values and their names
+1. head()       displays the first few rows of data with the column names
 1. names()      gives just column names
-1. class()      gives the class of the object, broadly what sort of object it is  
+1. class()      gives the class of the object, that is broadly what sort of object it is  
 
-Have a look at the outputs for `africapitals`, uncomment the later lines to see their outputs :
+Have a look at the outputs for `africapitals` (uncomment the later lines to see their outputs) :
 
 ```{r sf-points-str, exercise=TRUE, exercise.lines = NULL}
 
@@ -232,9 +233,9 @@ These show us that `africapitals` is of class `sf` and `data.frame` and contains
 
 `data.frame`, often referred to as just dataframe, is the most common object type in R certainly for new users. Dataframes store data in rows and named columns like a spreadsheet. 
 
-`sf` objects are a special type dataframe with a column called 'geometry' that contains the spatial information, and one row per feature. In this case the features are points.
+`sf` objects are a special type of dataframe with a column called 'geometry' that contains the spatial information, and one row per feature. In this case the features are points.
 
-If you look at the output from the `str()` command above you should see that the first value in the geometry column has the coordinates 7.17 9.18. Because the capitals data are points they just have a single coordinate pair representing the longitude and latitude of each capital.
+If you look at the output from the `str()` command above you should see that the first value in the geometry column has the coordinates 7.17 9.18. Because the capitals data are points, they just have a single coordinate pair representing the longitude and latitude of each capital.
 
 The highway and countries objects are also of class `sf` and contain geometry columns. You can uncomment the lines below and run to see what is contained in the first cell of the geometry column for the other vector objects. 
 
@@ -254,11 +255,11 @@ You should have seen that the geometry columns for the other objects contain mul
 
 There are a number of packages for making maps that extend what is available from `sf`.
 
-Package `tmap` is a good place to start, it offers both static and interactive mapping.
+Package `tmap` is a good place to start; it offers both static and interactive mapping.
 
 We can start with static plots of the capitals (points).
 
-In `tmap` `tm_shape([object_name])` defines the data to be used then `+` to add code that defines how the data are displayed, e.g. `tm_symbols()` for points. Extra arguments can be specified to modify the data display.
+In `tmap` `tm_shape([object_name])` defines the data to be used. Then `+` to add code that defines how the data are displayed, e.g. `tm_symbols()` for points. Extra arguments can be specified to modify the data display.
 
 See the hint button for how to set colour with `tm_symbols(col = "blue")` and `col=[column_name]` to set the colour of each point according to the data value stored in a column.
 
@@ -320,7 +321,7 @@ Gridded (raster) data can represent e.g. remotely sensed or modelled data.
 
 It can be displayed with `tm_shape([object_name])` & `tm_raster`. Here we specify the `breaks` or cutoffs to the different colour bands. 
 
-In this example if you use the default breaks by not specifying any arguments with `tm_raster()` (see the hint) the map looks entirely one colour. This is because there are few very high density cells and a majority of cells with very low values. This is a common issue with population data. The default, equal-interval, classification doesn't work well, most of the map falls in the lowest category. If you look very closely you can see a few very high value cells e.g. in Lagos & Cairo.     
+In this example, if you use the default breaks by not specifying any arguments with `tm_raster()` (see the hint) the map looks entirely one colour. This is because there are few very high density cells and a majority of cells with very low values. This is a common issue with population data. The default (equal-interval) classification doesn't work well; most of the map falls in the lowest category. If you look very closely you can see a few very high value cells e.g. in Lagos & Cairo.     
 
 ```{r tmap-raster1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
@@ -351,8 +352,8 @@ Experiment with commenting out & in lines in the code below by adding and removi
 
 Try to make maps :
 1. without the highway network
-1. without the raster population layer & with country boundaries that are visible
-1. with text labels for ISO country codes
+2. without the raster population layer & with country boundaries that are visible
+3. with text labels for ISO country codes
 
 ```{r tmap-vector-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='set-crs-and-tmap-mode'}
 
@@ -372,7 +373,7 @@ tm_legend(show = FALSE)
 
 ## G. Interactive maps
 
-The maps created so far have been static, there are also great options for creating interactive maps, for web pages or reports, where readers can zoom, pan and enable/disable layers.
+The maps created so far have been static. There are also great options for creating interactive maps, which are useful for web pages or reports where readers can zoom, pan and enable/disable layers.
 
 In `tmap` you can keep the identical code that we've looked at so far and just add a single line before : `tmap_mode('view')` to change to interactive 'view' mode. View mode will remain active for your R session and you can switch back to static `plot` mode using `tmap_mode('plot')`. 
 
@@ -395,16 +396,17 @@ tm_legend(show = FALSE)
 
 ```
 
+
 You may want to go back to the earlier plots and see how they are modified by adding `tmap_mode('view')` before the code.
 
 
 ## H. Read spatial data from files
 
-So far we have been using data that already exist within R as an R object.
+So far we have been using data that already exists within R as an R object.
 
 The same things can be done on data coming from a file.
 
-Spatial data can be read into R using the `sf::st_read()` for vector data (points, lines and polygons) and the `raster` package for gridded data.
+Spatial data can be read into R using `sf::st_read()` for vector data (points, lines and polygons) and the `raster` package for gridded data.
 
 We show examples below using files that are stored in the package. To use with your own data replace filename1 & 2. (Note that these specified file names can also be a URL for data provided on the web.)
 
@@ -433,7 +435,7 @@ i. storing and handling spatial data with the package `sf`
 i. making static & interactive maps with package `tmap`
 i. reading in data from files using `sf` and `raster`
 
-This is a start, there are plenty of other options (e.g. maps can also be made with the packages `mapview` & `ggplot2`). We will cover other options in later tutorials, have a look at the [afrilearnr-crash-course](https://andysouth.shinyapps.io/afrilearnr-crash-course/) for some potential next steps. We welcome feedback, different ways of [getting in touch are on our website](https://afrimapr.github.io/afrimapr.website/get-involved/).
+This is a start; there are plenty of other options (e.g. maps can also be made with the packages `mapview` & `ggplot2`). We will cover other options in later tutorials. Have a look at the [afrilearnr-crash-course](https://andysouth.shinyapps.io/afrilearnr-crash-course/) for some potential next steps. We welcome feedback - different ways of [getting in touch are on our website](https://afrimapr.github.io/afrimapr.website/get-involved/).
 
 There is a short quiz if you'd like to test your learning. 
 
@@ -470,7 +472,7 @@ quiz(
     answer("sf", correct = TRUE),
     answer("mapview", correct = TRUE),  
     allow_retry = TRUE,
-    incorrect = "All of these packages can be used to make maps ! Sometimes which you choose can be down to preference."
+    incorrect = "All of these packages can be used to make maps ! Sometimes which one you choose can be down to preference."
   )
 )
 ```
