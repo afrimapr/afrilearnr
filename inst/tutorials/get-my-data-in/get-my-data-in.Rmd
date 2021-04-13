@@ -224,7 +224,7 @@ For other spatial vector formats (e.g. kml, geopackage & geojson) the same appro
 
 Here we show an example with a .kml file of the simplified African highway network.
 
-```{r kml-highways, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
+```{r kml-highways, exercise = TRUE, exercise.eval = FALSE, message = FALSE, warning = FALSE}
 
 filename <- system.file("extdata","trans-african-highway.kml", package="afrilearndata", mustWork=TRUE)
 
