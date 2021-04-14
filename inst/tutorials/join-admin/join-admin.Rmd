@@ -6,7 +6,7 @@ description: >
   Learn how to join spatial data with a data.frame to create a map. 
 ---
 
-```{r setup, echo=FALSE}
+```{r setup, include=FALSE}
 
 # To install a package
 #usethis::use_package("<external-package>")
@@ -266,7 +266,7 @@ The `gapminder` data is automatically read in when the `gapminder` package is lo
 
 We can start by inspecting the data using `head()`, this will return the first six rows of the `data.frame`. 
 
-```{r read_gapminder, exercise = TRUE, exercise.eval = TRUE, exercise.setup = "library_packages"}
+```{r read_gapminder, exercise = TRUE, exercise.eval = TRUE}
 
 head(gapminder)
 
@@ -275,7 +275,7 @@ head(gapminder)
 
 We can prepare the data by filtering out just the data for the continent "Africa" using `filter(continent == "Africa")`. Can you add to the filter to get data just for the year 2007 ?
 
-```{r filter_gapminder, exercise = TRUE, exercise.setup = "library_packages"}
+```{r filter_gapminder, exercise = TRUE}
 
 africa_gap <- gapminder %>%
                   filter(continent == "Africa")
@@ -286,19 +286,25 @@ Hint `r fa(name = "lightbulb-on")`: you need a comma(,) to add an extra filter, 
 
 
 
-```{r filter_gapminder_prep, echo = FALSE, exercise.setup = "library_packages"}
-
+```{r filter_gapminder_prep, echo = FALSE}
+# this is run just in case learner didn't get previous exercise right 
 africa_gap <- gapminder %>%
                   filter(continent == "Africa",
                          year == 2007)
 
 ```
 
-Fill in the blank to inspect the first 6 rows of the new data.frame. 
+Can you remember how to inspect the first 6 rows of the new data.frame ? Experiemnt in the window below.
 
 ```{r head_data, exercise = TRUE, exercise.setup = "filter_gapminder_prep"}
 
-____(africa_gap)
+
+
+```
+
+```{r head_data-hint, exercise = TRUE, exercise.setup = "filter_gapminder_prep"}
+
+head(africa_gap)
 
 ```
 
@@ -335,12 +341,12 @@ quiz(
 )
 ```
 
-* `r fa(name = "question-circle")` Not all countries are included in the gapminder dataset. Can you find your country there?
+* `r fa(name = "question-circle")` Not all countries are included in the gapminder dataset. Can you find your country there by replacing your country name below ?
 
 ```{r mycountry, exercise = TRUE, exercise.setup = "filter_gapminder_prep"}
 
 africa_gap %>%
-  filter(country == "_______")
+  filter(country == "Rwanda")
 
 ```
 
@@ -359,7 +365,7 @@ africa_gap %>%
 
 The spatial data we will use is contained in the `afrilearndata` package. In this tutorial we'll be working with the country-level spatial data `africountries`.
 
-```{r tmap_data, eval = TRUE, echo = FALSE, message = FALSE, exercise.setup = "library_packages"}
+```{r tmap_data, eval = TRUE, echo = FALSE, message = FALSE}
 
 tmap_mode("view")
 
@@ -391,7 +397,7 @@ t %>%
 
 Read in the Africa country data `africountries.shp` from the `afrilearndata` package. This data is subset from the `rnaturalearth` package.
 
-```{r read_spatial_data, exercise = TRUE, exercise.eval = TRUE, exercise.setup = "library_packages"}
+```{r read_spatial_data, exercise = TRUE, exercise.eval = TRUE}
 
 filename <- system.file("extdata","africountries.shp", package="afrilearndata", mustWork=TRUE)
 africountries <- sf::read_sf(filename)
@@ -404,7 +410,7 @@ africountries <- sf::read_sf(filename)
 You can run a quick check to see where the data is using plot.
 
 
-```{r map_plot, exercise = TRUE, exercise.setup = "library_packages"}
+```{r map_plot, exercise = TRUE}
 
 plot(africountries)
 
@@ -413,7 +419,7 @@ plot(africountries)
 We can also explore a single variable on its own. Let's take a look at pop_est. 
 
 
-```{r map_plot_pop_est, exercise = TRUE, exercise.setup = "library_packages"}
+```{r map_plot_pop_est, exercise = TRUE}
 
 plot(africountries["pop_est"])
 
@@ -428,7 +434,7 @@ plot(africountries["pop_est"])
 Try exploring the data, change the code to check the **head** of the data instead of the tail. 
 
 
-```{r head_spatial_data, exercise = TRUE, exercise.eval = FALSE, exercise.setup = "library_packages"}
+```{r head_spatial_data, exercise = TRUE, exercise.eval = FALSE}
 
 tail(africountries)
 
@@ -440,7 +446,7 @@ tail(africountries)
 
 #### Doublecheck that the class is `sf` using the function `class`. 
 
-```{r check_class, exercise = TRUE, exercise.eval = TRUE, exercise.setup = "library_packages"}
+```{r check_class, exercise = TRUE, exercise.eval = TRUE}
 
 class(africountries)
 
@@ -448,7 +454,7 @@ class(africountries)
 
 Check the names of the columns using `names()`
 
-```{r check_names, exercise = TRUE, exercise.eval = TRUE, exercise.setup = "library_packages"}
+```{r check_names, exercise = TRUE, exercise.eval = TRUE}
 
 names(africountries)
 
