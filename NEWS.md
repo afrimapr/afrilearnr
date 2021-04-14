@@ -1,5 +1,10 @@
 
 
+## afrilearnr 0.0.0.9004
+
+1. make all chunks in join-admin runnable & remove dependence on packrat that was causing errors on shinyapps
+
+
 ## afrilearnr 0.0.0.9003
 
 1. make all remaining system.file calls unix compatible

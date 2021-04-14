@@ -8,9 +8,6 @@ description: >
 
 ```{r setup, include=FALSE}
 
-# To install a package
-#usethis::use_package("<external-package>")
-#allow_skip: true
 
 # library to run the tutorial
 library(learnr)
@@ -21,9 +18,11 @@ knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE )
 # Error in value[[3L]](cond) : there is no package called 'sf'
 # turned out to be an issue with the fill-the-blanks sections lower down
 # updating to dev version of packrat locally fixed deployment 
-remotes::install_github('rstudio/packrat')
+# 2021-04 removing packrat dependency that was causing issues on shinyapps
+# by making all chunks runnable below
+# remotes::install_github('rstudio/packrat')
 # see https://github.com/afrimapr/afrilearnr/issues/4#issue-791404707
-library(packrat) #adding packrat to fix broken cells
+# library(packrat) #adding packrat to fix broken cells
 
 ```
 
