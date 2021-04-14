@@ -282,8 +282,13 @@ africa_gap <- gapminder %>%
 
 ```
 
-Hint `r fa(name = "lightbulb-on")`: you need a comma(,) to add an extra filter, 2007 is a number and doesn't need quotes "".
+```{r filter_gapminder-hint}
 
+africa_gap <- gapminder %>%
+                  filter(continent == "Africa",
+                         year == 2007)
+
+```
 
 
 ```{r filter_gapminder_prep, echo = FALSE}
@@ -294,7 +299,7 @@ africa_gap <- gapminder %>%
 
 ```
 
-Can you remember how to inspect the first 6 rows of the new data.frame ? Experiemnt in the window below.
+Can you remember how to inspect the first 6 rows of the new data.frame ? Experiment in the window below.
 
 ```{r head_data, exercise = TRUE, exercise.setup = "filter_gapminder_prep"}
 
@@ -302,7 +307,7 @@ Can you remember how to inspect the first 6 rows of the new data.frame ? Experie
 
 ```
 
-```{r head_data-hint, exercise = TRUE, exercise.setup = "filter_gapminder_prep"}
+```{r head_data-hint}
 
 head(africa_gap)
 
@@ -788,6 +793,14 @@ africountries <- africountries %>%
 
 ```
 
+```{r recode_africountries_ex-hint, exercise = TRUE}
+
+
+africountries <- africountries %>%
+                      mutate(name_long = recode(name_long,
+                                          "Republic of Congo" = "Congo"))
+
+```
 
 
 ```{r recode_africountries, echo = FALSE}
@@ -883,7 +896,7 @@ africa_df %>%
 ```{r africa_df_countries, exercise = TRUE, exercise.setup = "final_left_join2"}
 
 africa_df %>%
-  _____(name_long) %>%
+  distinct(name_long) %>%
   count()
 
 ```
@@ -938,7 +951,7 @@ head(africa_df)
 ```{r plot2, exercise = TRUE, exercise.setup = "final_left_join2"}
 
 ggplot(data = africa_df) +
-    geom_sf(aes(fill = ______))
+    geom_sf(aes(fill = pop_est))
 
 ```
 
@@ -950,7 +963,7 @@ Let's now refine our plot with labels, a new colour scheme, and axis labels.
 
 * We can change the fill using several options from the `scale_fill_` layer try typing `scale_fill_` + TAB to see the different options 
 
-```{r fill_options, exercise = TRUE}
+```{r fill_options, exercise = TRUE, exercise.eval = FALSE}
 
 scale_fill_
 
