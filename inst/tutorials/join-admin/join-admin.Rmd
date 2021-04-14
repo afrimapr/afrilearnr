@@ -14,7 +14,8 @@ description: >
 
 # library to run the tutorial
 library(learnr)
-library(packrat) #adding packrat to fix broken cells
+#this causes error on shinyapps
+#library(packrat) #adding packrat to fix broken cells
 knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE )
 
 
