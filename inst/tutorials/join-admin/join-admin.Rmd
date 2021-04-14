@@ -14,22 +14,22 @@ description: >
 
 # library to run the tutorial
 library(learnr)
-#this causes error on shinyapps
-#library(packrat) #adding packrat to fix broken cells
+
 knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE )
 
+# BEWARE 2021-01 previously uploading to shinyapps gave this error
+# Error in value[[3L]](cond) : there is no package called 'sf'
+# turned out to be an issue with the fill-the-blanks sections lower down
+# updating to dev version of packrat locally fixed deployment 
+remotes::install_github('rstudio/packrat')
+# see https://github.com/afrimapr/afrilearnr/issues/4#issue-791404707
+library(packrat) #adding packrat to fix broken cells
 
 ```
 
 
 ```{r library_packages, include=FALSE}
 
-# BEWARE 2021-01 previously uploading to shinyapps gave this error
-# Error in value[[3L]](cond) : there is no package called 'sf'
-# turned out to be an issue with the fill-the-blanks sections lower down
-# updating to dev version of packrat locally fixed deployment 
-# remotes::install_github('rstudio/packrat')
-# see https://github.com/afrimapr/afrilearnr/issues/4#issue-791404707
 
 # working with geographic data
 library(sf) 
