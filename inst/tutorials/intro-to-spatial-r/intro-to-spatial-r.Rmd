@@ -25,16 +25,6 @@ library(raster)           # raster manipulation
 
 ```
 
-```{js print2pdf1, context="server"}
-// the following 2 chunks print the completed sections of the tutorial to PDF
-// uses chunk at end
-// from https://github.com/rstudio/learnr/issues/465#issuecomment-817861943
-$(document).on('shiny:inputchanged', function(event) {
-  if (event.name === 'print') {
-    window.print();
-  }
-});
-```
 
 ## A. Outline of this tutorial
 
@@ -63,12 +53,8 @@ Through the magic of [learnr](https://rstudio.github.io/learnr/) you can modify 
 
 If you are accessing this from shinyapps, another option is to install [afrilearnr from github](https://github.com/afrimapr/afrilearnr) and run these tutorials locally.
 
-A third option is to create a pdf of the tutorial that you can save and run through by copying the code into an R console.
-```{r print2pdf2}
-# button can be placed anywhere in the tutorial
-# from https://github.com/rstudio/learnr/issues/465#issuecomment-817861943
-actionButton("print", "save tutorial to pdf", style="opacity: .7; color: #000;")
-```
+A third option, for lower bandwidths, is to download a [pdf of the tutorial](https://github.com/afrimapr/afrilearnr/tree/main/inst/pdfs) and run through by copying the code into an R console.
+
 
 
 ## B. Spatial data outline
@@ -477,10 +463,13 @@ quiz(
 )
 ```
 
-```{css echo=FALSE}
-# to enable saving complete tutorial as pdf
+```{r echo=FALSE}
+# chunk below enables printing whole tutorial from browser e.g. to pdf
+# DO NOT put any #comments in the chunk below, that stops it from working !! 
 # from https://github.com/rstudio/learnr/issues/465
-# saving this in a separate file print.css didn't work locally or on shinyapps because browser couldn't find file 
+# saving csss in a separate file print.css didn't work locally or on shinyapps because browser couldn't find file 
+```
+```{css echo=FALSE}
 @media print {
   .topicsContainer,
   .topicActions,
@@ -509,5 +498,4 @@ quiz(
 }  
   
 ```
-
 

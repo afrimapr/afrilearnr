@@ -39,6 +39,8 @@ Through the magic of [learnr](https://rstudio.github.io/learnr/) you can modify 
 
 If you are accessing this from shinyapps you can also install [afrilearnr from github](https://github.com/afrimapr/afrilearnr) and run these tutorials locally.
 
+A third option, for lower bandwidths, is to download a [pdf of the tutorial](https://github.com/afrimapr/afrilearnr/tree/main/inst/pdfs) and run through by copying the code into an R console.
+
 ### How this tutorial relates to others in afrilearnr
 
 tutorial name        | outline                                   | recommended order
@@ -76,3 +78,41 @@ library(afrilearndata)    # example data, not required if using only your own da
 ## Other sources of information
 
 [Geocomputation in R](https://geocompr.robinlovelace.net/)
+
+
+
+```{r echo=FALSE}
+# chunk below enables printing whole tutorial from browser e.g. to pdf
+# DO NOT put any #comments in the chunk below, that stops it from working !! 
+# from https://github.com/rstudio/learnr/issues/465
+# saving csss in a separate file print.css didn't work locally or on shinyapps because browser couldn't find file 
+```
+```{css echo=FALSE}
+@media print {
+  .topicsContainer,
+  .topicActions,
+  .exerciseActions .skip {
+    display: none;
+  }
+  .topics .tutorialTitle,
+  .topics .section.level2,
+  .topics .section.level3:not(.hide) {
+    display: block;
+  }
+  .topics {
+    width: 100%;
+  }
+  .tutorial-exercise, .tutorial-question {
+    page-break-inside: avoid;
+  }
+  .section.level3.done h3 {
+    padding-left: 0;
+    background-image: none;
+  }
+  .topics .showSkip .exerciseActions::before {
+    content: "Topic not yet completed...";
+    font-style: italic;
+  }
+}  
+  
+```
