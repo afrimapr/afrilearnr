@@ -15,7 +15,17 @@ maps.
 
 ## IN DEVELOPMENT
 
-Draft demos of tutorials :
+Online tutorials :
+
+| tutorial name                                                            | outline                                                       | recommended order |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------- | ----------------- |
+| [intro-to-spatial-r](https://andysouth.shinyapps.io/intro-to-spatial-r/) | an introduction to spatial data in R                          | 1                 |
+| `get-my-data-in`                                                         | getting your own spatial data into R                          | 2                 |
+| `join-admin`                                                             | dealing with data referenced by names rather than coordinates | 3                 |
+| `afrilearnr-crash-course`                                                | gallery of plots & code with minimal explanation              | 4                 |
+| *proposed*                                                               |                                                               |                   |
+| `colour-my-map`                                                          | changing map colours in different map packages                |                   |
+| `data-manipulation`                                                      | manipulating your data to allow making different maps         |                   |
 
 1.  [intro-to-spatial-r](https://andysouth.shinyapps.io/intro-to-spatial-r/)
 2.  [get-my-data-in](https://andysouth.shinyapps.io/get-my-data-in/)

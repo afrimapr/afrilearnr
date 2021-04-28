@@ -1,6 +1,6 @@
 Package: afrilearnr
 Title: Tutorials on spatial data in R using African data
-Version: 0.0.0.9004
+Version: 0.0.0.9005
 Authors@R: 
     c(
     person(given = "Laurie",

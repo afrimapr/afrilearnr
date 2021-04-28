@@ -1,4 +1,10 @@
 
+## afrilearnr 0.0.0.9005
+
+1. make tutorials printable to pdf to provide low bandwidth or offline solution
+1. add simple first example to join-admin
+1. add proposed tutorials to readme
+
 
 ## afrilearnr 0.0.0.9004
 
