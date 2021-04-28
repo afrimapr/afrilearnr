@@ -13,25 +13,21 @@ A growing collection of interactive
 [learnr](https://rstudio.github.io/learnr/) tutorials for making African
 maps.
 
-## IN DEVELOPMENT
-
 Online tutorials :
 
-| tutorial name                                                            | outline                                                       | recommended order |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------- | ----------------- |
-| [intro-to-spatial-r](https://andysouth.shinyapps.io/intro-to-spatial-r/) | an introduction to spatial data in R                          | 1                 |
-| `get-my-data-in`                                                         | getting your own spatial data into R                          | 2                 |
-| `join-admin`                                                             | dealing with data referenced by names rather than coordinates | 3                 |
-| `afrilearnr-crash-course`                                                | gallery of plots & code with minimal explanation              | 4                 |
-| *proposed*                                                               |                                                               |                   |
-| `colour-my-map`                                                          | changing map colours in different map packages                |                   |
-| `data-manipulation`                                                      | manipulating your data to allow making different maps         |                   |
+| tutorial name                                                                      | outline                                                       | recommended order |
+| ---------------------------------------------------------------------------------- | ------------------------------------------------------------- | ----------------- |
+| [intro-to-spatial-r](https://andysouth.shinyapps.io/intro-to-spatial-r/)           | an introduction to spatial data in R                          | 1                 |
+| [get-my-data-in](https://andysouth.shinyapps.io/get-my-data-in/)                   | getting your own spatial data into R                          | 2                 |
+| [joining spreadsheet data to a map](https://andysouth.shinyapps.io/join-admin/)    | dealing with data referenced by names rather than coordinates | 3                 |
+| [afrilearnr-crash-course](https://andysouth.shinyapps.io/afrilearnr-crash-course/) | gallery of plots & code with minimal explanation              | 4                 |
+| *proposed :*                                                                       |                                                               |                   |
+| *colour-my-map*                                                                    | changing map colours in different map packages                |                   |
+| *data-manipulation*                                                                | manipulating your data to allow making different maps         |                   |
+| *map-my-study-area*                                                                | making a simple map to show where a study area is             |                   |
 
-1.  [intro-to-spatial-r](https://andysouth.shinyapps.io/intro-to-spatial-r/)
-2.  [get-my-data-in](https://andysouth.shinyapps.io/get-my-data-in/)
-3.  [joining spreadsheet data to a
-    map](https://andysouth.shinyapps.io/join-admin/)
-4.  [afrilearnr-crash-course](https://andysouth.shinyapps.io/afrilearnr-crash-course/)
+If you would like to suggest a tutorial for this collection, or
+contribute one, please get in touch.
 
 The tutorials are saved as a package that can also be installed and run
 locally in RStudio.
