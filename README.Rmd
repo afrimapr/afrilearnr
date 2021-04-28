@@ -27,7 +27,7 @@ tutorial name           | outline                                   | recommende
 ----------------------- | ----------------------------------------- | ---------------
 [intro-to-spatial-r](https://andysouth.shinyapps.io/intro-to-spatial-r/) |   an introduction to spatial data in R | 1 
 [get-my-data-in](https://andysouth.shinyapps.io/get-my-data-in/)     |    getting your own spatial data into R | 2
-[joining spreadsheet data to a map](https://andysouth.shinyapps.io/join-admin/)         |    dealing with data referenced by names rather than coordinates | 3
+[join-admin](https://andysouth.shinyapps.io/join-admin/)         |    dealing with data referenced by names rather than coordinates | 3
 [afrilearnr-crash-course](https://andysouth.shinyapps.io/afrilearnr-crash-course/) |   gallery of plots & code with minimal explanation | 4
 *proposed :* ||
 *colour-my-map*      | changing map colours in different map packages |
