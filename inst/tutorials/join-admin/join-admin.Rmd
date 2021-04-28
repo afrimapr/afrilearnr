@@ -104,6 +104,29 @@ There are often difficulties in joining data to due to differences in the spelli
 
 Here we start to develop a checklist identifying code steps that users can work through to aid the joining process.
 
+Here is a simple first example showing how we can join a super-small dataframe onto a spatial data object and make a map from it. Below we create a dataframe with just two rows and columns, and then join this on to the `africountries` object from the `afrilearndata` package.
+
+```{r super_simple_first_join, exercise = TRUE, exercise.eval = TRUE}
+
+library(afrilearndata)
+library(dplyr)
+library(mapview)
+
+# create a dataframe
+mydf <- data.frame(country=c("Togo","Ghana"),
+                   language=c("French","English"))
+
+# join the dataframe onto an existing spatial object
+africa_df <- dplyr::left_join(x = africountries, 
+                              y = mydf, 
+                              by = c("name_long" = "country")
+                              )
+# visualise the joined data
+mapview(africa_df, zcol="language")
+
+```
+
+We will now go on to help you through more realistic examples that can be a little trickier than this.
 
 
 ```{r tmap_data_sample, eval = TRUE, echo = FALSE, message = FALSE, warning=FALSE}
