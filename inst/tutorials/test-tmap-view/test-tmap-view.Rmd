@@ -9,7 +9,7 @@ library(learnr)
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-This chunk - the Hello World ! example from tmap, with tmap_mode("view") added, works when the tutorial is loaded, or when run from console, but fails (with $ operator is invalid for atomic vectors) when 'Run Code' is pressed.
+This chunk - the Hello World! example from tmap, with tmap_mode("view") added, works when the tutorial is loaded, or when run from console, but used to fail (with $ operator is invalid for atomic vectors) when 'Run Code' is pressed. This was fixed by RStudio in 2021-02 https://github.com/rstudio/learnr/issues/484
 
 
 ```{r tmap-test, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
