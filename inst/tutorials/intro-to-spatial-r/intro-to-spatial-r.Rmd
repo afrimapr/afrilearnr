@@ -20,8 +20,14 @@ library(sf)               # working with vector data
 library(afrilearndata)    # example data
 library(tmap)             # static and interactive mapping
 library(raster)           # raster manipulation
+#library(rgdal)           # raster tiff reading
 #library(dplyr)           # data wrangling
 #library(mapview)         # interactive mapping
+
+# to make local running the same as linux on shinyapps
+# see https://github.com/rstudio/learnr/issues/529
+#options(tutorial.exercise.evaluator = learnr:::forked_evaluator)
+# 2021-05-26 but gave me local error : Warning: Error in : 'mcparallel' is not an exported object from 'namespace:parallel'
 
 ```
 
@@ -249,6 +255,13 @@ In `tmap` `tm_shape([object_name])` defines the data to be used. Then `+` to add
 
 See the hint button for how to set colour with `tm_symbols(col = "blue")` and `col=[column_name]` to set the colour of each point according to the data value stored in a column.
 
+```{r tmap-points1-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(1)
+```
+
 ```{r tmap-points1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
 tm_shape(africapitals) +
@@ -266,6 +279,13 @@ tm_shape(africapitals) +
 ```
 
 The highway network (lines) can be plotted using the same `tm_shape([object_name])` to start, then adding `tm_lines()` to display the lines. The hints button below shows options for colouring lines.
+
+```{r tmap-lines1-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(2)
+```
 
 ```{r tmap-lines1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
@@ -285,6 +305,13 @@ tm_shape(afrihighway) + tm_lines(col = "Name") #use a column name from the objec
 ```
 
 Countries (polygons) can similarly be mapped using `tm_shape` and `tm_polygons`. See the hint button for options for colouring countries.
+
+```{r tmap-polygons-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(3)
+```
 
 ```{r tmap-polygons1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
@@ -307,7 +334,14 @@ Gridded (raster) data can represent e.g. remotely sensed or modelled data.
 
 It can be displayed with `tm_shape([object_name])` & `tm_raster`. Here we specify the `breaks` or cutoffs to the different colour bands. 
 
-In this example, if you use the default breaks by not specifying any arguments with `tm_raster()` (see the hint) the map looks entirely one colour. This is because there are few very high density cells and a majority of cells with very low values. This is a common issue with population data. The default (equal-interval) classification doesn't work well; most of the map falls in the lowest category. If you look very closely you can see a few very high value cells e.g. in Lagos & Cairo.     
+In this example, if you use the default breaks by not specifying any arguments with `tm_raster()` (see the hint) the map looks entirely one colour. This is because there are few very high density cells and a majority of cells with very low values. This is a common issue with population data. The default (equal-interval) classification doesn't work well; most of the map falls in the lowest category. If you look very closely you can see a few very high value cells e.g. in Lagos & Cairo. 
+
+```{r tmap-raster1-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(4)
+```
 
 ```{r tmap-raster1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
@@ -341,6 +375,13 @@ Try to make maps :
 2. without the raster population layer & with country boundaries that are visible
 3. with text labels for ISO country codes
 
+```{r tmap-vector-raster-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(5)
+```
+
 ```{r tmap-vector-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='set-crs-and-tmap-mode'}
 
 tmap::tm_shape(afripop2020) +
@@ -364,6 +405,13 @@ The maps created so far have been static. There are also great options for creat
 In `tmap` you can keep the identical code that we've looked at so far and just add a single line before : `tmap_mode('view')` to change to interactive 'view' mode. View mode will remain active for your R session and you can switch back to static `plot` mode using `tmap_mode('plot')`. 
 
 This is the identical code from the previous section but shown in view mode.
+
+```{r tmap-interactive-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+#tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(6)
+```
 
 ```{r tmap-interactive, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='set-crs-and-tmap-mode'}
 
@@ -392,7 +440,7 @@ So far we have been using data that already exists within R as an R object.
 
 The same things can be done on data coming from a file.
 
-Spatial data can be read into R using `sf::st_read()` for vector data (points, lines and polygons) and the `raster` package for gridded data.
+Spatial data can be read into R using `sf::st_read()` for vector data (points, lines and polygons) and the `raster` & `rgdal` packages for gridded data.
 
 We show examples below using files that are stored in the package. To use with your own data replace filename1 & 2. (Note that these specified file names can also be a URL for data provided on the web.)
 
@@ -404,6 +452,7 @@ filename1 <- system.file("extdata","africountries.shp", package="afrilearndata",
 myobject1 <- sf::st_read(filename1)
 
 library(raster)
+library(rgdal) 
 filename2 <- system.file("extdata","afripop2020.tif", package="afrilearndata", mustWork=TRUE)
 myobject2 <- raster::raster(filename2)
 
