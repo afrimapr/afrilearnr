@@ -1,5 +1,5 @@
 ---
-title: "test tmap & mapview displaying intercative maps from earlier chunk"
+title: "test tmap & mapview displaying interactive maps from earlier chunk"
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---
@@ -10,6 +10,8 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 New issue 2021-05. On shinyapps learnr chunks display interactive maps from earlier chunks.
+
+[Reproducible example code](https://github.com/afrimapr/afrilearnr/blob/main/inst/tutorials/test-tmap-cache/test-tmap-cache.Rmd)
 
 Chunk1 makes an orange world map. 
 Chunk2 makes a blue world map. 
@@ -23,6 +25,7 @@ If user runs chunk 3 then 4, both chunks display map3.
 Happens on shinyapps but not locally.
 
 Possibly related to issue fixed by RStudio in 2021-02 https://github.com/rstudio/learnr/issues/484
+Causing us problems with our tutorials here : https://github.com/afrimapr/afrilearnr/issues/16
 
 
 ```{r tmap-test-orange, exercise = TRUE, exercise.eval = TRUE, warning=FALSE, message=FALSE}
