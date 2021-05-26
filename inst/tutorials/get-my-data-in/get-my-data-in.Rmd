@@ -84,6 +84,12 @@ To map these data in R usually requires a 3 step process.
 
 Here we will demonstrate the 3 steps using some airport data from the excellent [ourairports](https://ourairports.com/continents/AF/airports.csv) that we have extracted and saved in the [afrilearndata](https://github.com/afrimapr/afrilearndata) package. 
 
+```{r csv-airports-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+#tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(1)
+```
 
 
 ```{r csv-airports, exercise = TRUE, exercise.eval = TRUE}
@@ -119,6 +125,13 @@ In this case it tells `sf` what system to expect. In the majority of cases coord
 
 **Question :** What happens when the `crs=4326` argument is not included in the code below ? Try adding it back in and see what the difference is.
 
+
+```{r csv-crs-missing-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+#tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(2)
+```
 
 ```{r csv-crs-missing, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
@@ -172,6 +185,13 @@ An alternative is directly to create a dataframe within R containing coordinates
 
 In the example below try changing the coordinates within the dataframe at step 1, and run to see the points change.
 
+```{r dataframe-sf-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+#tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(3)
+```
+
 ```{r dataframe-sf, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
 # 1. create dataframe
@@ -204,6 +224,12 @@ If a colleague emails use just a single file named `*.shp` then you will not be 
 
 Shapefiles can store points, lines or polygons. The example below uses a shapefile containing polygons.
 
+```{r shp-countries-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+#tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(4)
+```
 
 ```{r shp-countries, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
@@ -226,6 +252,13 @@ For other spatial vector formats (e.g. kml, geopackage & geojson) the same appro
 
 Here we show an example with a .kml file of the simplified African highway network.
 
+```{r kml-highways-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+#tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(5)
+```
+
 ```{r kml-highways, exercise = TRUE, exercise.eval = FALSE, message = FALSE, warning = FALSE}
 
 filename <- system.file("extdata","trans-african-highway.kml", package="afrilearndata", mustWork=TRUE)
@@ -244,6 +277,12 @@ To read in raster data we need to use the package `raster` instead of `sf`. The 
 
 `raster(filename)` will also work with other raster formats such as ascii grids or .jpg.
 
+```{r rast1-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+#tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(6)
+```
 
 ```{r rast1, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
@@ -267,6 +306,13 @@ In intro-to-spatial-r we fixed this in `tmap` using the `breaks=` argument to se
 
 In these examples we have used `mapview` to give us a quick view by passing it only the spatial object and not specifying any other options. `mapview` is very flexible and by passing just a few arguments the map can be made much more informative. Try copy & pasting this line to replace the final line in the code window below and running it. It uses the columns named `type` and `name` from the datafile to colour and label the points. `cex` sets the size of the points, in this case making them smaller.
 `mapview(mysf, zcol='type', label='name', cex=2)`
+
+```{r mapview-options-airports-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+#tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(7)
+```
 
 ```{r mapview-options-airports, exercise = TRUE, exercise.eval = FALSE}
 
