@@ -57,6 +57,13 @@ sf::st_crs(africontinent) <- 4326
 
 `tmap` uses static 'plot' mode by default. To make these plots interactive, copy & paste `tmap_mode('view')` above the code below & press `Run Code`.
 
+```{r tmap-vector-raster-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(1)
+```
+
 ```{r tmap-vector-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='libraries'}
 
 tmap::tm_shape(afripop2020) +
@@ -75,6 +82,13 @@ tm_legend(show = FALSE)
 ## tmap : colour polygons by data
 
 `tmap` uses static 'plot' mode by default. To make these plots interactive, copy & paste `tmap_mode('view')` above the code below & press `Run Code`.
+
+```{r tmap-colour-polygons-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(2)
+```
 
 ```{r tmap-colour-polygons, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='libraries'}
 
@@ -113,6 +127,13 @@ ggplot(africountries) +
 
 ## mapview : interactive point data
 
+```{r mapview-points-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+#tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(3)
+```
+
 ```{r mapview-points, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='libraries'}
 
 mapview(africapitals,
@@ -125,6 +146,13 @@ mapview(africapitals,
 ## mapview : interactive points and lines
 
 Using `list(1,2)` to pass two layers and respective arguments.
+
+```{r mapview-points-lines-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+#tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(4)
+```
 
 ```{r mapview-points-lines, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='libraries'}
 
@@ -141,6 +169,13 @@ mapview(list(africapitals, afrihighway),
 
 Rasters are displayed semi-transparent by default so base layers including place names are visible. Population density data are often highly skewed with rare high values meaning that most variation gets hidden when using default data breaks between colours. Specifying near logarithmic breaks using `at` below makes patterns clearer.
 
+```{r mapview-raster-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+#tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(5)
+```
+
 ```{r mapview-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='libraries'}
 
 mapview(afripop2020,
@@ -154,6 +189,12 @@ Note that previously this failed on shinyapps : package 'rgdal' is not available
 
 We can select one row from `africountries` in `afrilearndata` to allow us to display a country, using the `bbox` argument in tmap, the `ext` argument allows us to extend the bbox a little.
 
+```{r mapview-one-country-setup}
+# to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
+# IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
+#tmap_mode("plot")
+htmlwidgets::setWidgetIdSeed(6)
+```
 
 ```{r mapview-one-country, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='libraries'}
 
