@@ -64,7 +64,7 @@ tmap_mode("plot")
 htmlwidgets::setWidgetIdSeed(1)
 ```
 
-```{r tmap-vector-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='libraries'}
+```{r tmap-vector-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
 tmap::tm_shape(afripop2020) +
     tm_raster(palette = rev(viridisLite::magma(5)), breaks=c(0,2,20,200,2000,25000)) +
@@ -90,7 +90,7 @@ tmap_mode("plot")
 htmlwidgets::setWidgetIdSeed(2)
 ```
 
-```{r tmap-colour-polygons, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='libraries'}
+```{r tmap-colour-polygons, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
 
 tm_shape(africountries) +
@@ -106,7 +106,7 @@ tm_shape(africountries) +
 Comment out `geom_text_repel` lines to remove labels.
 Comment out `theme_void()` to add axes back in.
 
-```{r ggplot-colour-polygons, exercise = TRUE, exercise.eval = TRUE, warning = FALSE, exercise.setup='libraries'}
+```{r ggplot-colour-polygons, exercise = TRUE, exercise.eval = TRUE, warning = FALSE}
 
 library(ggplot2)
 library(ggrepel)
@@ -134,7 +134,7 @@ ggplot(africountries) +
 htmlwidgets::setWidgetIdSeed(3)
 ```
 
-```{r mapview-points, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='libraries'}
+```{r mapview-points, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
 mapview(africapitals,
         zcol = 'pop',
@@ -154,7 +154,7 @@ Using `list(1,2)` to pass two layers and respective arguments.
 htmlwidgets::setWidgetIdSeed(4)
 ```
 
-```{r mapview-points-lines, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='libraries'}
+```{r mapview-points-lines, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
 mapview(list(africapitals, afrihighway),
         zcol = list('pop','Name'),
@@ -176,7 +176,7 @@ Rasters are displayed semi-transparent by default so base layers including place
 htmlwidgets::setWidgetIdSeed(5)
 ```
 
-```{r mapview-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='libraries'}
+```{r mapview-raster, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
 mapview(afripop2020,
         at = c(0,2,20,200,2000,25000))
@@ -196,7 +196,7 @@ We can select one row from `africountries` in `afrilearndata` to allow us to dis
 htmlwidgets::setWidgetIdSeed(6)
 ```
 
-```{r mapview-one-country, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE, exercise.setup='libraries'}
+```{r mapview-one-country, exercise = TRUE, exercise.eval = TRUE, message = FALSE, warning = FALSE}
 
 tmap_mode('view') #tmap uses static 'plot' mode by default, uncomment this to change to interactive 'view' mode
 #tmap_mode('plot') #to change back to static 'plot' mode
