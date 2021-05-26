@@ -21,7 +21,7 @@ Pull requests welcome from anyone. Internal contributors are encouraged to push 
 ## hazards
 
 1. exercise chunks plotting interactive maps (with tmap or mapview) need to have unique ids set like this :
-```{r tmap-points1-setup}
+```{r [chunk-name]-setup}
 # to avoid issues with interactive maps https://github.com/rstudio/learnr/issues/529
 # IdSeed must be set to be unique in the Rmd, even for mode('plot') to allow user to change
 tmap_mode("plot")
