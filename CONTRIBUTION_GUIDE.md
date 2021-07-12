@@ -42,4 +42,8 @@ If you save an sf-dataframe with a newer version of GDAL, and then try on a syst
 The solution is to re-set the projection:
 st_crs(data) <- 4326
 
+4. when deploying to shinyapps can get an error like this :   
+Package 'afrilearndata 0.0.0.9003' was installed from sources; Packrat will assume this package is available from a CRAN-like repository during future restores.
+Caused if a package (afrilearndata in this case) has been built locally. SOlution is to reinstall from Github : remotes::install_github("afrimapr/afrilearndata")
+
 
