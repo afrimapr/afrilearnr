@@ -1,4 +1,9 @@
 
+## afrilearnr 0.0.0.9006
+
+1. fix package availability bug in join-admin
+
+
 ## afrilearnr 0.0.0.9005
 
 1. make tutorials printable to pdf to provide low bandwidth or offline solution
