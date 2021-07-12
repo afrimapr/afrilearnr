@@ -8,7 +8,6 @@ description: >
 
 ```{r setup, include=FALSE}
 
-
 # library to run the tutorial
 library(learnr)
 
@@ -24,11 +23,9 @@ knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE )
 # see https://github.com/afrimapr/afrilearnr/issues/4#issue-791404707
 # library(packrat) #adding packrat to fix broken cells
 
-```
-
-
-```{r library_packages, include=FALSE}
-
+# putting package loading into the setup chunk seems
+# to allow packages to be accessed from later chunks
+# in a way that doesn't work if in a separate chunk
 
 # working with geographic data
 library(sf) 
