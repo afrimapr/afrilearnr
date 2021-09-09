@@ -18,6 +18,10 @@ Pull requests welcome from anyone. Internal contributors are encouraged to push 
 1. headers indicated with '##' become separate sections and appear in index on left
 
 
+## deploying to shinyapps
+
+See these [guidelines for deploying learnr tutorials on shinyapps](https://cran.r-project.org/web/packages/learnr/vignettes/shinyapps-publishing.html). Particularly note increasing number of instances to the maximum from the Overview page using the + icon (5 in our case), and increase instance size to maximum. I also decreased max worker processes from 3 to 2.
+
 ## hazards
 
 1. exercise chunks plotting interactive maps (with tmap or mapview) need to have unique ids set like this :
